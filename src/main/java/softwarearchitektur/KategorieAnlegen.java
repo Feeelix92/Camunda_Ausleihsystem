@@ -14,13 +14,14 @@ public class KategorieAnlegen implements JavaDelegate {
         String kategorieName = "kategorieName";
         String kategorieBeschreibung = "";
 
-        // ToDo Kategorien aus Datenbank prüfen
+        // ToDo Kategorien aus Datenbank laden
         String kategorien = "Fernseher";
 
         kategorieName = (String) delegateExecution.getVariable("kategorieName");
         kategorieBeschreibung = (String) delegateExecution.getVariable("kategorieBeschreibung");
 
         System.out.println("Kategoriename: " + kategorieName + " Beschreibung: " + kategorieBeschreibung);
+        // ToDo Kategoriename mit Datenbank vergleichen
         if(kategorieName.equals(kategorien)){
             throw new BpmnError("Kategorie_Vorhanden", "Der gewünschte Kategoriename ist bereits vorhanden");
         //}else{

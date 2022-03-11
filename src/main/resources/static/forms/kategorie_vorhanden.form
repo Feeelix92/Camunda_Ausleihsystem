@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 2,
+  "components": [
+    {
+      "text": "<h3>Die Kategorie mit dem gewünschten Namen ist bereits vorhanden.</h3>",
+      "type": "text",
+      "id": "Field_11ojitv"
+    },
+    {
+      "values": [
+        {
+          "label": "Ja",
+          "value": "ja"
+        },
+        {
+          "label": "Nein",
+          "value": "nein"
+        }
+      ],
+      "label": "Möchten Sie Ihre Eingabe korrigieren?",
+      "type": "select",
+      "id": "Field_1b10y0t",
+      "key": "antwortKategorieFehler",
+      "validate": {
+        "required": true
+      },
+      "description": "Wenn Sie Ja auswählen, gelangen Sie zurück zur Dateneingabe."
+    }
+  ],
+  "type": "default",
+  "id": "kategorieVorhanden"
+}

@@ -13,7 +13,7 @@
       <bpmn:incoming>Flow_1o3f1pt</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_02qnv10" sourceRef="eingabe-kategorie" targetRef="kategorie-pruefen" />
-    <bpmn:serviceTask id="kategorie-pruefen" name="Daten prüfen und speichern" camunda:delegateExpression="#{kategorieAnlegen}">
+    <bpmn:serviceTask id="kategorie-pruefen" name="Daten prüfen und speichern" camunda:delegateExpression="#{prozessAnlegen}">
       <bpmn:incoming>Flow_02qnv10</bpmn:incoming>
       <bpmn:outgoing>Flow_1o3f1pt</bpmn:outgoing>
       <bpmn:dataOutputAssociation id="DataOutputAssociation_0rkjrfn">

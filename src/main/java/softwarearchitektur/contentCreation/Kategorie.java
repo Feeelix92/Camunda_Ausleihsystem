@@ -23,7 +23,7 @@ public class Kategorie implements Anlegen{
 
         String kategorieName = (String) formularEingaben.get("kategorieName");
         String kategorieBeschreibung = (String) formularEingaben.get("kategorieBeschreibung");
-
+        String uebergeordneteKategorie = (String) formularEingaben.get("uebergeordneteKategorie");
 
         // ToDo Kategoriename mit Datenbank vergleichen
         if(kategorieName.equals(kategorien)){

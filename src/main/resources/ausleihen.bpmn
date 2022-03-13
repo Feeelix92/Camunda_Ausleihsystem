@@ -8,14 +8,16 @@
       <bpmn:lane id="Lane_1qr2z0n" name="Nutzer">
         <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0ixe8wn</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Activity_156m9d3</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_13yrrav</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Activity_0njs4dj</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_1dcc3fb</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_1i3fku5</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_156m9d3</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_0kcihnz" name="System">
         <bpmn:flowNodeRef>Activity_073uw8y</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_12b0ujj</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_05x4mw5</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0p1gkww</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
     <bpmn:sequenceFlow id="Flow_1l4r7a1" sourceRef="StartEvent_1" targetRef="Activity_0ixe8wn" />
@@ -26,34 +28,27 @@
     <bpmn:serviceTask id="Activity_0ixe8wn" name="Artikelliste erstellen" camunda:class="softwarearchitektur.ArtikellisteErstellenDelegate">
       <bpmn:incoming>Flow_1l4r7a1</bpmn:incoming>
       <bpmn:outgoing>Flow_1r0xnhg</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_11ggt3q">
+        <bpmn:targetRef>DataStoreReference_0ign11o</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
     </bpmn:serviceTask>
-    <bpmn:userTask id="Activity_156m9d3" name="Buch anfragen" camunda:formKey="embedded:app:forms/artikelliste.html" camunda:assignee="demo">
-      <bpmn:incoming>Flow_1r0xnhg</bpmn:incoming>
-      <bpmn:outgoing>Flow_0l4quwf</bpmn:outgoing>
-    </bpmn:userTask>
-    <bpmn:endEvent id="Event_13yrrav" name="Ausleihprozess erfolgreich">
-      <bpmn:incoming>Flow_1py07v4</bpmn:incoming>
-    </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_0l4quwf" sourceRef="Activity_156m9d3" targetRef="Activity_073uw8y" />
     <bpmn:sequenceFlow id="Flow_1ihmp9t" sourceRef="Activity_073uw8y" targetRef="Gateway_12b0ujj" />
     <bpmn:serviceTask id="Activity_073uw8y" name="Verfügbarkeit prüfen" camunda:class="softwarearchitektur.ArtikelPrüfenDelegate">
       <bpmn:incoming>Flow_0l4quwf</bpmn:incoming>
       <bpmn:outgoing>Flow_1ihmp9t</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_1tuv3rg">
+        <bpmn:targetRef>DataStoreReference_0ign11o</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
     </bpmn:serviceTask>
-    <bpmn:sequenceFlow id="Flow_1py07v4" sourceRef="Activity_0njs4dj" targetRef="Event_13yrrav" />
     <bpmn:exclusiveGateway id="Gateway_12b0ujj">
       <bpmn:incoming>Flow_1ihmp9t</bpmn:incoming>
       <bpmn:outgoing>Flow_0ffbsr7</bpmn:outgoing>
       <bpmn:outgoing>Flow_03dp390</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:sequenceFlow id="Flow_0ffbsr7" sourceRef="Gateway_12b0ujj" targetRef="Activity_0njs4dj">
+    <bpmn:sequenceFlow id="Flow_0ffbsr7" sourceRef="Gateway_12b0ujj" targetRef="Activity_0p1gkww">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${artikel_verfügbar}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:scriptTask id="Activity_0njs4dj" scriptFormat="JavaScript">
-      <bpmn:incoming>Flow_0ffbsr7</bpmn:incoming>
-      <bpmn:outgoing>Flow_1py07v4</bpmn:outgoing>
-      <bpmn:script>print("verfügbarer Artikel: " + artikel_geprüft)</bpmn:script>
-    </bpmn:scriptTask>
     <bpmn:sequenceFlow id="Flow_03dp390" sourceRef="Gateway_12b0ujj" targetRef="Event_05x4mw5">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${!artikel_verfügbar}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
@@ -61,15 +56,43 @@
       <bpmn:incoming>Flow_03dp390</bpmn:incoming>
       <bpmn:messageEventDefinition id="MessageEventDefinition_0un3hek" camunda:class="softwarearchitektur.SendEmailDelegate" />
     </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0d15x4z" sourceRef="Activity_0p1gkww" targetRef="Activity_1i3fku5" />
+    <bpmn:serviceTask id="Activity_0p1gkww" name="Artikel in Warenkorb legen" camunda:class="softwarearchitektur.ArtikelInWarenkorbDelegate">
+      <bpmn:incoming>Flow_0ffbsr7</bpmn:incoming>
+      <bpmn:outgoing>Flow_0d15x4z</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_1e2rbic">
+        <bpmn:targetRef>DataStoreReference_167bmls</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+    </bpmn:serviceTask>
+    <bpmn:dataStoreReference id="DataStoreReference_0ign11o" />
+    <bpmn:dataStoreReference id="DataStoreReference_167bmls" />
+    <bpmn:sequenceFlow id="Flow_1fkko1j" sourceRef="Activity_1dcc3fb" targetRef="Event_13yrrav" />
+    <bpmn:endEvent id="Event_13yrrav" name="Ausleihprozess erfolgreich">
+      <bpmn:incoming>Flow_1fkko1j</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:scriptTask id="Activity_1dcc3fb" name="Artikel ausgeben" scriptFormat="JavaScript">
+      <bpmn:incoming>Flow_0dhhfga</bpmn:incoming>
+      <bpmn:outgoing>Flow_1fkko1j</bpmn:outgoing>
+      <bpmn:script>print("Artikel: "+artikelBestaetigen)</bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:sequenceFlow id="Flow_0dhhfga" sourceRef="Activity_1i3fku5" targetRef="Activity_1dcc3fb" />
+    <bpmn:userTask id="Activity_1i3fku5" name="Artikel bestätigen" camunda:formKey="embedded:app:forms/artikelBestätigen.html" camunda:assignee="demo">
+      <bpmn:incoming>Flow_0d15x4z</bpmn:incoming>
+      <bpmn:outgoing>Flow_0dhhfga</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Activity_156m9d3" name="Artikel anfragen" camunda:formKey="embedded:app:forms/artikelliste.html" camunda:assignee="demo">
+      <bpmn:incoming>Flow_1r0xnhg</bpmn:incoming>
+      <bpmn:outgoing>Flow_0l4quwf</bpmn:outgoing>
+    </bpmn:userTask>
   </bpmn:process>
   <bpmn:message id="Message_1wwsd29" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_0usbfm5">
       <bpmndi:BPMNShape id="Participant_0ji8u30_di" bpmnElement="Participant_0ji8u30" isHorizontal="true">
-        <dc:Bounds x="125" y="114" width="1545" height="586" />
+        <dc:Bounds x="125" y="114" width="1545" height="506" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_0kcihnz_di" bpmnElement="Lane_0kcihnz" isHorizontal="true">
-        <dc:Bounds x="155" y="314" width="1515" height="386" />
+        <dc:Bounds x="155" y="314" width="1515" height="306" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_1qr2z0n_di" bpmnElement="Lane_1qr2z0n" isHorizontal="true">
         <dc:Bounds x="155" y="114" width="1515" height="200" />
@@ -90,18 +113,27 @@
         <di:waypoint x="520" y="450" />
         <di:waypoint x="615" y="450" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1py07v4_di" bpmnElement="Flow_1py07v4">
-        <di:waypoint x="800" y="200" />
-        <di:waypoint x="852" y="200" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0ffbsr7_di" bpmnElement="Flow_0ffbsr7">
         <di:waypoint x="640" y="425" />
-        <di:waypoint x="640" y="200" />
-        <di:waypoint x="700" y="200" />
+        <di:waypoint x="640" y="370" />
+        <di:waypoint x="890" y="370" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_03dp390_di" bpmnElement="Flow_03dp390">
         <di:waypoint x="665" y="450" />
         <di:waypoint x="702" y="450" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0d15x4z_di" bpmnElement="Flow_0d15x4z">
+        <di:waypoint x="940" y="330" />
+        <di:waypoint x="940" y="210" />
+        <di:waypoint x="1000" y="210" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1fkko1j_di" bpmnElement="Flow_1fkko1j">
+        <di:waypoint x="1250" y="210" />
+        <di:waypoint x="1322" y="210" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0dhhfga_di" bpmnElement="Flow_0dhhfga">
+        <di:waypoint x="1100" y="210" />
+        <di:waypoint x="1150" y="210" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="179" y="182" width="36" height="36" />
@@ -112,27 +144,51 @@
       <bpmndi:BPMNShape id="Activity_105k17r_di" bpmnElement="Activity_0ixe8wn">
         <dc:Bounds x="260" y="160" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0i6hz7p_di" bpmnElement="Activity_156m9d3">
-        <dc:Bounds x="420" y="160" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_13yrrav_di" bpmnElement="Event_13yrrav">
-        <dc:Bounds x="852" y="182" width="36" height="36" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="834" y="225" width="75" height="27" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1o67xz3_di" bpmnElement="Activity_073uw8y">
         <dc:Bounds x="420" y="410" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_12b0ujj_di" bpmnElement="Gateway_12b0ujj" isMarkerVisible="true">
         <dc:Bounds x="615" y="425" width="50" height="50" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1ekvod0_di" bpmnElement="Activity_0njs4dj">
-        <dc:Bounds x="700" y="160" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0ktnucj_di" bpmnElement="Event_05x4mw5">
         <dc:Bounds x="702" y="432" width="36" height="36" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_10gqcig_di" bpmnElement="Activity_0p1gkww">
+        <dc:Bounds x="890" y="330" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_0ign11o_di" bpmnElement="DataStoreReference_0ign11o">
+        <dc:Bounds x="285" y="515" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_167bmls_di" bpmnElement="DataStoreReference_167bmls">
+        <dc:Bounds x="915" y="515" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_13yrrav_di" bpmnElement="Event_13yrrav">
+        <dc:Bounds x="1322" y="192" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1304" y="235" width="75" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1on21xq_di" bpmnElement="Activity_1dcc3fb">
+        <dc:Bounds x="1150" y="170" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1bhuc6r_di" bpmnElement="Activity_1i3fku5">
+        <dc:Bounds x="1000" y="170" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0i6hz7p_di" bpmnElement="Activity_156m9d3">
+        <dc:Bounds x="420" y="160" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_11ggt3q_di" bpmnElement="DataOutputAssociation_11ggt3q">
+        <di:waypoint x="310" y="240" />
+        <di:waypoint x="310" y="515" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_1tuv3rg_di" bpmnElement="DataOutputAssociation_1tuv3rg">
+        <di:waypoint x="420" y="479" />
+        <di:waypoint x="335" y="528" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_1e2rbic_di" bpmnElement="DataOutputAssociation_1e2rbic">
+        <di:waypoint x="940" y="410" />
+        <di:waypoint x="940" y="515" />
+      </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>

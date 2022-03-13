@@ -6,6 +6,7 @@ import org.camunda.bpm.engine.variable.Variables;
 import org.camunda.bpm.engine.variable.Variables.SerializationDataFormats;
 
 import java.io.Console;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,13 +20,18 @@ public class ArtikelPrüfenDelegate implements JavaDelegate {
 	@Override
 	public void execute(DelegateExecution execution) throws Exception {
 		
-		String artikelNr = (String) execution.getVariable("artikel");
+		int artikelNr = (int) execution.getVariable("artikel");
 		
-		String artikelNr_geprüft = artikelNr + "_geprüft";
+		ArrayList<Integer> verfügbareArtikel = new ArrayList<Integer>();
+		verfügbareArtikel.add(1);
+		verfügbareArtikel.add(2);
 		
-		execution.setVariable("artikel_geprüft", artikelNr_geprüft);
-		execution.setVariable("artikel_verfügbar", false);
+		boolean verfügbar = false;
+			
+		verfügbar = verfügbareArtikel.contains(artikelNr);
 		
+		execution.setVariable("artikelNr", artikelNr);
+		execution.setVariable("artikel_verfügbar", verfügbar);
 		
 	}
 

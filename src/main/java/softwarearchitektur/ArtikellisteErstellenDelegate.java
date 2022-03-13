@@ -27,6 +27,8 @@ public class ArtikellisteErstellenDelegate implements JavaDelegate {
 		execution.setVariable("ALLE_ARTIKEL",Variables.objectValue(artikelliste)
 				.serializationDataFormat(SerializationDataFormats.JSON)
 				.create());
+		
+		execution.setVariable("ARTIKEL_HASH", artikelliste);
 
 	}
 

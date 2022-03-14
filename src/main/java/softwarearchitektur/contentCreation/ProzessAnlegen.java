@@ -10,7 +10,7 @@ import java.util.Map;
 @Named
 public class ProzessAnlegen implements JavaDelegate {
     @Override
-    public void execute(DelegateExecution delegateExecution) throws Exception {
+    public void execute(DelegateExecution delegateExecution){
         AnlegenFactory factory = new AnlegenFactory();
 
         Map<String, Object> formularEingaben = delegateExecution.getVariables();

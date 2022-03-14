@@ -1,6 +1,5 @@
 package softwarearchitektur.contentCreation;
 
-import org.camunda.bpm.engine.delegate.BpmnError;
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
 
@@ -8,7 +7,7 @@ import javax.inject.Named;
 import java.util.Map;
 
 @Named
-public class ProzessAnlegen implements JavaDelegate {
+public class ProzessAnlegenDelegate implements JavaDelegate {
     @Override
     public void execute(DelegateExecution delegateExecution){
         AnlegenFactory factory = new AnlegenFactory();

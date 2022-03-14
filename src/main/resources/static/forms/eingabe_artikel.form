@@ -30,20 +30,24 @@
     },
     {
       "label": "Lagernummer",
-      "type": "textfield",
-      "id": "Field_09ifd9n",
+      "type": "number",
+      "id": "Field_01lda2n",
       "key": "lagernummer",
       "validate": {
-        "required": true
+        "required": true,
+        "min": 0,
+        "max": 100
       }
     },
     {
       "label": "Zustand ID",
-      "type": "textfield",
-      "id": "Field_1l1h821",
+      "type": "number",
+      "id": "Field_1h1jtgy",
       "key": "zustandID",
       "validate": {
-        "required": true
+        "required": true,
+        "min": 0,
+        "max": 10
       }
     },
     {

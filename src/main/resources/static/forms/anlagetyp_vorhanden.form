@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "components": [
     {
-      "text": "<h3>Die Kategorie mit dem gewünschten Namen ist bereits vorhanden.</h3>",
+      "text": "<h3>Der Anlagetyp mit dem gewünschten Namen ist bereits vorhanden.</h3>",
       "type": "text",
       "id": "Field_11ojitv"
     },
@@ -20,7 +20,7 @@
       "label": "Möchten Sie Ihre Eingabe korrigieren?",
       "type": "select",
       "id": "Field_1b10y0t",
-      "key": "antwortKategorieFehler",
+      "key": "antwortAnlageFehler",
       "validate": {
         "required": true
       },
@@ -28,5 +28,5 @@
     }
   ],
   "type": "default",
-  "id": "kategorieVorhanden"
+  "id": "anlagetypVorhanden"
 }

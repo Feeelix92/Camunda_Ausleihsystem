@@ -14,9 +14,10 @@ public class ProzessAnlegen implements JavaDelegate {
         AnlegenFactory factory = new AnlegenFactory();
 
         Map<String, Object> formularEingaben = delegateExecution.getVariables();
+        String anlageTyp = (String) formularEingaben.get("anlageTyp");
 
         // ToDo Prozess anpassen, Auswahl Kategorie, Gegenstand oder Artikeltyp ergänzen
-        Anlegen anlegen = factory.neueInhalteAnlegen("kategorie");
+        Anlegen anlegen = factory.neueInhalteAnlegen(anlageTyp);
         anlegen.checkData(formularEingaben);
     }
 }

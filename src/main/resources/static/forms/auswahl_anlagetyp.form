@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 2,
+  "components": [
+    {
+      "values": [
+        {
+          "value": "kategorie",
+          "label": "Kategorie"
+        },
+        {
+          "label": "Artikeltyp",
+          "value": "artikeltyp"
+        },
+        {
+          "label": "Artikel",
+          "value": "artikel"
+        }
+      ],
+      "label": "Auswahl Anlagetyp",
+      "type": "select",
+      "id": "Field_0io88jg",
+      "key": "anlageTyp",
+      "validate": {
+        "required": true
+      },
+      "description": "Wählen Sie aus was Sie anlegen möchten."
+    }
+  ],
+  "type": "default",
+  "id": "auswahlAnlagetyp"
+}

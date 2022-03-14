@@ -2,11 +2,11 @@
   "schemaVersion": 2,
   "components": [
     {
-      "label": "Kategoriename",
+      "label": "Artikeltypname",
       "type": "textfield",
       "id": "Field_035yemv",
-      "key": "kategorieName",
-      "description": "Wie soll die Kategorie heißen?",
+      "key": "artikelTypName",
+      "description": "Wie soll der Artikeltyp heißen?",
       "validate": {
         "required": true,
         "regularExpressionPattern": "^(?:0|[1-9][0-9]*)\\\\.[0-9]+$"
@@ -16,10 +16,10 @@
       "label": "Beschreibung",
       "type": "textfield",
       "id": "Field_09nhomy",
-      "key": "kategorieBeschreibung",
+      "key": "artikelTypBeschreibung",
       "description": "Wie soll die Beschreibung lauten?"
     }
   ],
   "type": "default",
-  "id": "eingabeKategoriename"
+  "id": "eingabeArtikeltyp"
 }

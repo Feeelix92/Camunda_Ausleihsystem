@@ -7,7 +7,6 @@ import java.util.HashMap;
 
 public class SendEmailDelegate implements JavaDelegate{
 	
-    private static final String MAIL = "erik.damm97@googlemail.com";
 	
 	@Override
 	public void execute(DelegateExecution execution) throws Exception {
@@ -17,7 +16,7 @@ public class SendEmailDelegate implements JavaDelegate{
         String artikelTitel = alleArtikel.get(artikelNr);
         System.out.println(artikelTitel);
         content = content.replace("<#content>","Guten Tag, es tut uns leid Ihnen mitteilen zu müssen, dass Ihr gewählter Artikel nicht verfügbar ist.");
-        new MailService().sendEmail(MAIL,"Artikel-Verfügbarkeit", content);  
+        new MailService().sendEmail((String)execution.getVariable("mail"),"Artikel-Verfügbarkeit", content);  
 	}
 
 }

@@ -70,6 +70,19 @@
       <artifactId>spring-boot-starter-jdbc</artifactId>
     </dependency>
 
+    <!-- MySQL connector -->
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>8.0.28</version>
+    </dependency>
+    <!-- Hibernate 5.2.6 Final -->
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-core</artifactId>
+      <version>5.2.6.Final</version>
+    </dependency>
+
   </dependencies>
 
   <build>

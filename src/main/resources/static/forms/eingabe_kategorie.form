@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 2,
+  "components": [
+    {
+      "label": "Kategoriename",
+      "type": "textfield",
+      "id": "Field_035yemv",
+      "key": "kategorieName",
+      "description": "Wie soll die Kategorie heißen?",
+      "validate": {
+        "required": true,
+        "regularExpressionPattern": "^(?:0|[1-9][0-9]*)\\\\.[0-9]+$"
+      }
+    },
+    {
+      "label": "Beschreibung",
+      "type": "textfield",
+      "id": "Field_09nhomy",
+      "key": "kategorieBeschreibung",
+      "description": "Wie soll die Beschreibung lauten?"
+    }
+  ],
+  "type": "default",
+  "id": "eingabeKategorie"
+}

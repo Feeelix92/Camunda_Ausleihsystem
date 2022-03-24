@@ -29,3 +29,4 @@ hs_err_pid*
 
 #database file
 camunda-h2-database.trace.db
+camunda-h2-database.mv.db

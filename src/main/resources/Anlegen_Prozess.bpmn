@@ -67,7 +67,7 @@
     <bpmn:sequenceFlow id="Flow_1xyc7n3" name="Artikeltyp" sourceRef="Gateway_06nj2ch" targetRef="eingabe-artikeltyp">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">#{anlageTyp== 'artikeltyp'}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:userTask id="eingabe-artikel" name="Dateneingabe" camunda:formRef="eingabeArtikel" camunda:formRefBinding="deployment" camunda:candidateUsers="demo">
+    <bpmn:userTask id="eingabe-artikel" name="Dateneingabe" camunda:formRef="eingabeArtikel" camunda:formRefBinding="deployment" camunda:assignee="demo" camunda:candidateUsers="demo">
       <bpmn:incoming>Flow_03ekhq2</bpmn:incoming>
       <bpmn:outgoing>Flow_1s677oy</bpmn:outgoing>
     </bpmn:userTask>

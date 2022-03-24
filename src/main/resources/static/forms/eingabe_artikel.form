@@ -26,7 +26,8 @@
       "key": "artikelTypID",
       "validate": {
         "required": true
-      }
+      },
+      "description": "Zu welchem Artikeltyp gehört der Artikel?"
     },
     {
       "label": "Lagernummer",
@@ -37,7 +38,8 @@
         "required": true,
         "min": 0,
         "max": 100
-      }
+      },
+      "description": "In welchem Lager wird der Artikel aufbewahrt?"
     },
     {
       "label": "Zustand ID",
@@ -48,16 +50,38 @@
         "required": true,
         "min": 0,
         "max": 10
-      }
+      },
+      "description": "Welcher Zustand ist dem Artikel zugeordnet?"
     },
     {
-      "label": "Hersteller Art. Nr.",
+      "values": [
+        {
+          "label": "Ja",
+          "value": "true"
+        },
+        {
+          "label": "Nein",
+          "value": "false"
+        }
+      ],
+      "label": "Verfügbar",
+      "type": "select",
+      "id": "Field_1ixaddg",
+      "key": "verfuegbar",
+      "validate": {
+        "required": true
+      },
+      "description": "Ist der Artikel aktuell verfügbar?"
+    },
+    {
+      "label": "HerstellerArtNr",
       "type": "textfield",
       "id": "Field_1hhksqc",
       "key": "herstellerArtNr",
       "validate": {
         "required": false
-      }
+      },
+      "description": "Wie lautet die Hersteller Artikel Nummer?"
     },
     {
       "label": "Einkaufspreis",
@@ -65,10 +89,23 @@
       "id": "Field_11vmcxw",
       "key": "einkaufspreis",
       "validate": {
-        "required": false
-      }
+        "required": true
+      },
+      "description": "Wie viel Euro kostet der Artikel im Einkauf?"
+    },
+    {
+      "label": "Ausleihpreis",
+      "type": "textfield",
+      "id": "Field_1y7e4ca",
+      "key": "ausleihpreis",
+      "validate": {
+        "required": true
+      },
+      "description": "Wie viel Euro kostet der Artikel im Verleih?"
     }
   ],
   "type": "default",
-  "id": "eingabeArtikel"
+  "id": "eingabeArtikel",
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.16"
 }

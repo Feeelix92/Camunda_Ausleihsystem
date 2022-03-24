@@ -18,8 +18,23 @@
       "id": "Field_09nhomy",
       "key": "kategorieBeschreibung",
       "description": "Wie soll die Beschreibung lauten?"
+    },
+    {
+      "values": [
+        {
+          "label": "Value",
+          "value": "value"
+        }
+      ],
+      "label": "Übergeordnete Kategorie",
+      "type": "select",
+      "id": "Field_1sdp9w0",
+      "key": "field_0kdc9uk",
+      "description": "Wählen Sie eine Kategorie aus, falls eine Unterkategorie erstellt werden soll."
     }
   ],
   "type": "default",
-  "id": "eingabeKategorie"
+  "id": "eingabeKategorie",
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.16"
 }

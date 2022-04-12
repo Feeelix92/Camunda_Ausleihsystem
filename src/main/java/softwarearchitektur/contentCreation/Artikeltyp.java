@@ -1,38 +1,25 @@
 package softwarearchitektur.contentCreation;
 
-import org.camunda.bpm.engine.delegate.BpmnError;
-
 import java.util.Map;
 
 public class Artikeltyp implements Anlegen{
+
     @Override
-    public Map<String, Object> getData() {
-        // ToDo Daten aus Datenbank holen
-        return null;
+    public void erstellen_und_speichern(Map<String, Object> formularEingaben){
+
+    }
+    @Override
+    public void aus_DB_holen_und_eigenschaften_aendern(Map<String, Object> formularEingaben){
     }
 
     @Override
-    public void setData(Map<String, Object> formularEingaben) {
-        // ToDo Daten in Datenbank speichern
+    public void erstellen_und_verbinden(){
     }
 
     @Override
-    public void checkData(Map<String, Object> formularEingaben) {
-        // ToDo Daten aus Datenbank holen vergleichen
-        //getData();
-
-        // ToDo statischen Artikeltyp in dynamische ändern
-        String artikeltyp = "Die Bibel";
-
-        String artikelTypName = (String) formularEingaben.get("artikelTypName");
-        String artikelTypBeschreibung = (String) formularEingaben.get("artikelTypBeschreibung");
-
-        // ToDo Artikeltypen mit Datenbank vergleichen
-        if(artikelTypName.equals(artikeltyp)) {
-            throw new BpmnError("Artikeltyp_Vorhanden", "Der gewünschte Artikeltyp " + artikelTypName + " ist bereits vorhanden");
-            //}else{
-            // ToDo neue Kategorie in der Datenbank speichern
-            //setData(formularEingaben);
-        }
+    public Map<String, Object> lade_Entities(Map<String, Object> formularEingaben) {
+        formularEingaben.put("artikelTypName", "");
+        formularEingaben.put("artikelTypBeschreibung", "");
+        return formularEingaben;
     }
 }

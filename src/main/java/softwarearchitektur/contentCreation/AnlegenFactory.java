@@ -1,5 +1,7 @@
 package softwarearchitektur.contentCreation;
 
+import DaoJPA.EntityClasses.Article;
+
 public class AnlegenFactory{
     Anlegen neueInhalteAnlegen(String art){
         switch (art){

@@ -22,6 +22,5 @@ public class LoadEntitiesDelegate implements JavaDelegate {
         if((boolean) formularEingaben.get("speichern")){
             anlegen.erstellen_und_speichern(formularEingaben);
         }
-
     }
 }

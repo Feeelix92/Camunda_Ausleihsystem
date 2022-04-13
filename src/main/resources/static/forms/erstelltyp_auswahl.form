@@ -1,5 +1,4 @@
 {
-  "schemaVersion": 2,
   "components": [
     {
       "values": [
@@ -16,16 +15,21 @@
           "value": "artikel"
         }
       ],
-      "label": "Auswahl Anlagetyp",
+      "label": "Auswahl Erstelltyp",
       "type": "select",
       "id": "Field_0io88jg",
-      "key": "anlageTyp",
+      "key": "erstellTyp",
       "validate": {
         "required": true
       },
-      "description": "Wählen Sie aus was Sie anlegen möchten."
+      "description": "Wählen Sie aus was Sie erstellen möchten."
     }
   ],
+  "schemaVersion": 4,
   "type": "default",
-  "id": "auswahlAnlagetyp"
+  "id": "erstelltypAuswahl",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.0.0"
+  }
 }

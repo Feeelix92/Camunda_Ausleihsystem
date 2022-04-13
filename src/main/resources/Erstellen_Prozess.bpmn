@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1ribttl" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.0.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.15.0">
-  <bpmn:process id="anlage-prozess" name="Anlage Prozess" isExecutable="true">
+  <bpmn:process id="erstellen-prozess" name="Erstellen Prozess" isExecutable="true">
     <bpmn:startEvent id="Event_02w8gdq" name="Admin möchte ein neues Objekt Anlegen">
       <bpmn:outgoing>Flow_0efwjqe</bpmn:outgoing>
     </bpmn:startEvent>
@@ -10,11 +10,11 @@
     <bpmn:endEvent id="Event_0y5vvlt" name="Anlagetyp konnte nicht erstellt werden">
       <bpmn:incoming>Flow_13ebr5a</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:boundaryEvent id="Event_11nzk8n" attachedToRef="eingabe-artikeltyp">
+    <bpmn:boundaryEvent id="Error_Event" attachedToRef="eingabe-artikeltyp">
       <bpmn:outgoing>Flow_0792fi6</bpmn:outgoing>
       <bpmn:errorEventDefinition id="ErrorEventDefinition_0mwclby" camunda:errorCodeVariable="Error_Code" camunda:errorMessageVariable="Error_Message" />
     </bpmn:boundaryEvent>
-    <bpmn:sequenceFlow id="Flow_0792fi6" sourceRef="Event_11nzk8n" targetRef="anlagetyp-vorhanden" />
+    <bpmn:sequenceFlow id="Flow_0792fi6" sourceRef="Error_Event" targetRef="anlagetyp-vorhanden" />
     <bpmn:sequenceFlow id="Flow_1itskoy" sourceRef="anlagetyp-vorhanden" targetRef="Gateway_0iil341" />
     <bpmn:dataStoreReference id="DataStoreReference_03hlzsq" />
     <bpmn:userTask id="anlagetyp-vorhanden" name="Fehlermeldung" camunda:formRef="anlagetypVorhanden" camunda:formRefBinding="deployment" camunda:assignee="demo" camunda:candidateUsers="demo">
@@ -69,7 +69,7 @@
   <bpmn:error id="Error_1saa73d" name="Artikel_Vorhanden" errorCode="Artikel_Vorhanden" />
   <bpmn:error id="Error_1m03ww0" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
-    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="anlage-prozess">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="erstellen-prozess">
       <bpmndi:BPMNEdge id="Flow_1lahzja_di" bpmnElement="Flow_1lahzja">
         <di:waypoint x="780" y="410" />
         <di:waypoint x="1262" y="410" />
@@ -130,9 +130,6 @@
           <dc:Bounds x="1239" y="625" width="85" height="40" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="DataStoreReference_03hlzsq_di" bpmnElement="DataStoreReference_03hlzsq">
-        <dc:Bounds x="701" y="195" width="50" height="50" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0nt3pj6_di" bpmnElement="anlagetyp-vorhanden">
         <dc:Bounds x="970" y="560" width="100" height="80" />
       </bpmndi:BPMNShape>
@@ -160,16 +157,19 @@
         <dc:Bounds x="970" y="440" width="100" height="84" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_13vjy1e_di" bpmnElement="Event_11nzk8n">
+      <bpmndi:BPMNShape id="DataStoreReference_03hlzsq_di" bpmnElement="DataStoreReference_03hlzsq">
+        <dc:Bounds x="701" y="195" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_072s7np_di" bpmnElement="Association_072s7np">
+        <di:waypoint x="726" y="195" />
+        <di:waypoint x="726" y="132" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_13vjy1e_di" bpmnElement="Error_Event">
         <dc:Bounds x="762" y="432" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="DataOutputAssociation_1ueqkyw_di" bpmnElement="DataOutputAssociation_1ueqkyw">
         <di:waypoint x="730" y="370" />
         <di:waypoint x="730" y="245" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Association_072s7np_di" bpmnElement="Association_072s7np">
-        <di:waypoint x="726" y="195" />
-        <di:waypoint x="726" y="132" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Association_0phota2_di" bpmnElement="Association_0phota2">
         <di:waypoint x="1020" y="560" />

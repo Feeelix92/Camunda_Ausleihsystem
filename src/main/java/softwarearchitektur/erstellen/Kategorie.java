@@ -36,7 +36,7 @@ public class Kategorie implements Erstellen {
     }
 
     @Override
-    public void erstellen_und_verbinden(){
+    public void erstellen_und_verbinden(Map<String, Object> formularEingaben){
         //Erstellen einer Kategorie wie in der Methode Kategorie erstellen
         Category aboveCategory = new Category("Test Kategorie","Das ist eine Testbeschreibung !!!!!");
 

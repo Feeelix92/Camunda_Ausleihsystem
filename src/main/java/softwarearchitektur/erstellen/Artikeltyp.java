@@ -13,7 +13,7 @@ public class Artikeltyp implements Erstellen {
     }
 
     @Override
-    public void erstellen_und_verbinden(){
+    public void erstellen_und_verbinden(Map<String, Object> formularEingaben){
     }
 
     @Override

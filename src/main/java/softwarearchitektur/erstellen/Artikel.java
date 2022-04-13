@@ -52,7 +52,7 @@ public class Artikel implements Erstellen {
     }
 
     @Override
-    public void erstellen_und_verbinden(){
+    public void erstellen_und_verbinden(Map<String, Object> formularEingaben){
         //Erstellen eines Artikeltyps wie in der Methode zum Artikel erstellen
         ArticleType articleType = new ArticleType((short)10,"Test Type","Das ist eine Testbeschreibung !!!!!");
 

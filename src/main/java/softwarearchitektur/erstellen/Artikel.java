@@ -1,4 +1,4 @@
-package softwarearchitektur.contentCreation;
+package softwarearchitektur.erstellen;
 
 import DaoJPA.DaoClasses.ArticleType_DaoJpa;
 import DaoJPA.DaoClasses.Article_DaoJpa;
@@ -9,7 +9,7 @@ import DaoJPA.EntityClasses.ArticleType;
 import java.math.BigDecimal;
 import java.util.Map;
 
-public class Artikel implements Anlegen{
+public class Artikel implements Erstellen {
 
     //Hier die Dao definieren die benötigt werden
     private static final DaoJPA<Article> articleDaoJPA = new Article_DaoJpa();
@@ -65,7 +65,7 @@ public class Artikel implements Anlegen{
     }
 
     @Override
-    public Map<String, Object> lade_Entities(Map<String, Object> formularEingaben) {
+    public void lade_entitaeten(Map<String, Object> formularEingaben) {
         formularEingaben.put("artikelName", "");
         formularEingaben.put("artikelBeschreibung", "");
         formularEingaben.put("lagernummer", (short) 0);
@@ -73,6 +73,5 @@ public class Artikel implements Anlegen{
         formularEingaben.put("verfügbar", true);
         formularEingaben.put("artikelTypID", (short) 0);
         formularEingaben.put("zustandID", (short) 0);
-        return formularEingaben;
     }
 }

@@ -1,5 +1,4 @@
 {
-  "schemaVersion": 2,
   "components": [
     {
       "text": "<h3>Der Anlagetyp mit dem gewünschten Namen ist bereits vorhanden.</h3>",
@@ -27,6 +26,11 @@
       "description": "Wenn Sie Ja auswählen, gelangen Sie zurück zur Dateneingabe."
     }
   ],
+  "schemaVersion": 4,
   "type": "default",
-  "id": "anlagetypVorhanden"
+  "id": "ersteltypVorhanden",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.0.0"
+  }
 }

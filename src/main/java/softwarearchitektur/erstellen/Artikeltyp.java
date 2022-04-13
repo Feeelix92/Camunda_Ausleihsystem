@@ -1,8 +1,8 @@
-package softwarearchitektur.contentCreation;
+package softwarearchitektur.erstellen;
 
 import java.util.Map;
 
-public class Artikeltyp implements Anlegen{
+public class Artikeltyp implements Erstellen {
 
     @Override
     public void erstellen_und_speichern(Map<String, Object> formularEingaben){
@@ -17,9 +17,8 @@ public class Artikeltyp implements Anlegen{
     }
 
     @Override
-    public Map<String, Object> lade_Entities(Map<String, Object> formularEingaben) {
+    public void lade_entitaeten(Map<String, Object> formularEingaben) {
         formularEingaben.put("artikelTypName", "");
         formularEingaben.put("artikelTypBeschreibung", "");
-        return formularEingaben;
     }
 }

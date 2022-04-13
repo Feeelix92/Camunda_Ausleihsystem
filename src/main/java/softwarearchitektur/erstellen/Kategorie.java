@@ -1,4 +1,4 @@
-package softwarearchitektur.contentCreation;
+package softwarearchitektur.erstellen;
 
 import DaoJPA.DaoClasses.Category_DaoJpa;
 import DaoJPA.DaoJPA;
@@ -6,7 +6,7 @@ import DaoJPA.EntityClasses.Category;
 
 import java.util.Map;
 
-public class Kategorie implements Anlegen{
+public class Kategorie implements Erstellen {
     //Hier die Dao definieren die benötigt werden
     private static final DaoJPA<Category> categoryDaoJPA = new Category_DaoJpa();
 
@@ -49,11 +49,10 @@ public class Kategorie implements Anlegen{
     }
 
     @Override
-    public Map<String, Object> lade_Entities(Map<String, Object> formularEingaben) {
+    public void lade_entitaeten(Map<String, Object> formularEingaben) {
         formularEingaben.put("kategorieName", "");
         formularEingaben.put("kategorieBeschreibung", "");
         formularEingaben.put("uebergeordneteKategorie", "");
-        return formularEingaben;
     }
 
 }

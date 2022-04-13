@@ -10,14 +10,14 @@
     <bpmn:endEvent id="Event_0y5vvlt" name="Anlagetyp konnte nicht erstellt werden">
       <bpmn:incoming>Flow_13ebr5a</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:boundaryEvent id="Error_Event" attachedToRef="eingabe-artikeltyp">
+    <bpmn:boundaryEvent id="Error_Event" attachedToRef="eingabeDaten">
       <bpmn:outgoing>Flow_0792fi6</bpmn:outgoing>
       <bpmn:errorEventDefinition id="ErrorEventDefinition_0mwclby" camunda:errorCodeVariable="Error_Code" camunda:errorMessageVariable="Error_Message" />
     </bpmn:boundaryEvent>
-    <bpmn:sequenceFlow id="Flow_0792fi6" sourceRef="Error_Event" targetRef="anlagetyp-vorhanden" />
-    <bpmn:sequenceFlow id="Flow_1itskoy" sourceRef="anlagetyp-vorhanden" targetRef="Gateway_0iil341" />
+    <bpmn:sequenceFlow id="Flow_0792fi6" sourceRef="Error_Event" targetRef="erstelltyp-vorhanden" />
+    <bpmn:sequenceFlow id="Flow_1itskoy" sourceRef="erstelltyp-vorhanden" targetRef="Gateway_0iil341" />
     <bpmn:dataStoreReference id="DataStoreReference_03hlzsq" />
-    <bpmn:userTask id="anlagetyp-vorhanden" name="Fehlermeldung" camunda:formRef="anlagetypVorhanden" camunda:formRefBinding="deployment" camunda:assignee="demo" camunda:candidateUsers="demo">
+    <bpmn:userTask id="erstelltyp-vorhanden" name="Fehlermeldung" camunda:formRef="erstelltypVorhanden" camunda:formRefBinding="deployment" camunda:assignee="demo" camunda:candidateUsers="demo">
       <bpmn:incoming>Flow_0792fi6</bpmn:incoming>
       <bpmn:outgoing>Flow_1itskoy</bpmn:outgoing>
     </bpmn:userTask>
@@ -29,11 +29,7 @@
     <bpmn:sequenceFlow id="Flow_13ebr5a" name="nein" sourceRef="Gateway_0iil341" targetRef="Event_0y5vvlt">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">#{antwortAnlageFehler== 'nein'}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:userTask id="auswahl-anlagetyp" name="Auswahl des Anlagetyps" camunda:formRef="auswahlAnlagetyp" camunda:formRefBinding="deployment" camunda:assignee="demo" camunda:candidateUsers="demo">
-      <bpmn:incoming>Flow_0efwjqe</bpmn:incoming>
-      <bpmn:outgoing>Flow_0ol9w81</bpmn:outgoing>
-    </bpmn:userTask>
-    <bpmn:userTask id="eingabe-artikeltyp" name="Daten eingeben und speichern" camunda:asyncBefore="true" camunda:assignee="demo" camunda:candidateUsers="demo">
+    <bpmn:userTask id="eingabeDaten" name="Daten eingeben und speichern" camunda:asyncBefore="true" camunda:assignee="demo" camunda:candidateUsers="demo">
       <bpmn:extensionElements>
         <camunda:formData />
       </bpmn:extensionElements>
@@ -44,17 +40,21 @@
         <bpmn:targetRef>DataStoreReference_03hlzsq</bpmn:targetRef>
       </bpmn:dataOutputAssociation>
     </bpmn:userTask>
-    <bpmn:sequenceFlow id="Flow_1qzvks5" sourceRef="Activity_06ddyat" targetRef="eingabe-artikeltyp" />
+    <bpmn:sequenceFlow id="Flow_1qzvks5" sourceRef="Activity_06ddyat" targetRef="eingabeDaten" />
     <bpmn:serviceTask id="Activity_06ddyat" name="Entitäten laden" camunda:delegateExpression="#{erstellenDelegate}">
       <bpmn:incoming>Flow_0ol9w81</bpmn:incoming>
       <bpmn:outgoing>Flow_1qzvks5</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:sequenceFlow id="Flow_0ol9w81" sourceRef="auswahl-anlagetyp" targetRef="Activity_06ddyat" />
-    <bpmn:sequenceFlow id="Flow_0efwjqe" sourceRef="Event_02w8gdq" targetRef="auswahl-anlagetyp" />
-    <bpmn:sequenceFlow id="Flow_1ipuj16" name="ja" sourceRef="Gateway_0iil341" targetRef="eingabe-artikeltyp">
+    <bpmn:sequenceFlow id="Flow_0efwjqe" sourceRef="Event_02w8gdq" targetRef="auswahl-ersteltyp" />
+    <bpmn:sequenceFlow id="Flow_1ipuj16" name="ja" sourceRef="Gateway_0iil341" targetRef="eingabeDaten">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">#{antwortAnlageFehler== 'ja'}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="Flow_1lahzja" sourceRef="eingabe-artikeltyp" targetRef="Event_1u2rmkk" />
+    <bpmn:sequenceFlow id="Flow_1lahzja" sourceRef="eingabeDaten" targetRef="Event_1u2rmkk" />
+    <bpmn:userTask id="auswahl-ersteltyp" name="Auswahl des Erstelltyps" camunda:formRef="erstelltypAuswahl" camunda:formRefBinding="deployment" camunda:assignee="demo" camunda:candidateUsers="demo">
+      <bpmn:incoming>Flow_0efwjqe</bpmn:incoming>
+      <bpmn:outgoing>Flow_0ol9w81</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_0ol9w81" sourceRef="auswahl-ersteltyp" targetRef="Activity_06ddyat" />
     <bpmn:textAnnotation id="TextAnnotation_1g2hcv7">
       <bpmn:text>Eigenschaften in Datenbank speichern</bpmn:text>
     </bpmn:textAnnotation>
@@ -62,7 +62,7 @@
     <bpmn:textAnnotation id="TextAnnotation_1v4cqip">
       <bpmn:text>Fehlermeldung und Möglichkeit um Prozess erneut zu starten</bpmn:text>
     </bpmn:textAnnotation>
-    <bpmn:association id="Association_0phota2" sourceRef="anlagetyp-vorhanden" targetRef="TextAnnotation_1v4cqip" />
+    <bpmn:association id="Association_0phota2" sourceRef="erstelltyp-vorhanden" targetRef="TextAnnotation_1v4cqip" />
   </bpmn:process>
   <bpmn:error id="Error_0yjszv2" name="Kategorie_Vorhanden" errorCode="Kategorie_Vorhanden" />
   <bpmn:error id="Error_02b7gcp" name="Artikeltyp_Vorhanden" errorCode="Artikeltyp_Vorhanden" />
@@ -130,7 +130,7 @@
           <dc:Bounds x="1239" y="625" width="85" height="40" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0nt3pj6_di" bpmnElement="anlagetyp-vorhanden">
+      <bpmndi:BPMNShape id="Activity_0nt3pj6_di" bpmnElement="erstelltyp-vorhanden">
         <dc:Bounds x="970" y="560" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_0iil341_di" bpmnElement="Gateway_0iil341" isMarkerVisible="true">
@@ -139,10 +139,11 @@
           <dc:Bounds x="1110" y="538" width="59" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0tk4mlx_di" bpmnElement="auswahl-anlagetyp">
+      <bpmndi:BPMNShape id="Activity_0tk4mlx_di" bpmnElement="auswahl-ersteltyp">
         <dc:Bounds x="360" y="370" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_08bgf77_di" bpmnElement="eingabe-artikeltyp">
+      <bpmndi:BPMNShape id="Activity_08bgf77_di" bpmnElement="eingabeDaten">
         <dc:Bounds x="680" y="370" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>

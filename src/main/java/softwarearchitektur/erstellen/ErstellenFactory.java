@@ -1,9 +1,7 @@
-package softwarearchitektur.contentCreation;
+package softwarearchitektur.erstellen;
 
-import DaoJPA.EntityClasses.Article;
-
-public class AnlegenFactory{
-    Anlegen neueInhalteAnlegen(String art){
+public class ErstellenFactory {
+    Erstellen neueInhalteErstellen(String art){
         switch (art){
             case "artikel":
                 return new Artikel();

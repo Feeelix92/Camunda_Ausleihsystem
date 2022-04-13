@@ -1,4 +1,4 @@
-package softwarearchitektur.contentCreation;
+package softwarearchitektur.erstellen;
 
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
@@ -10,17 +10,17 @@ import java.util.Map;
 public class ErstellenDelegate implements JavaDelegate {
     @Override
     public void execute(DelegateExecution delegateExecution){
-        AnlegenFactory factory = new AnlegenFactory();
+        ErstellenFactory factory = new ErstellenFactory();
 
         Map<String, Object> formularEingaben = delegateExecution.getVariables();
-        String anlageTyp = (String) formularEingaben.get("anlageTyp");
-        Anlegen anlegen = factory.neueInhalteAnlegen(anlageTyp);
-        anlegen.lade_Entities(formularEingaben);
+        String erstellTyp = (String) formularEingaben.get("erstellTyp");
+        Erstellen erstellen = factory.neueInhalteErstellen(erstellTyp);
+        erstellen.lade_entitaeten(formularEingaben);
         formularEingaben.put("speichern", false);
         delegateExecution.setVariables(formularEingaben);
 
         if((boolean) formularEingaben.get("speichern")){
-            anlegen.erstellen_und_speichern(formularEingaben);
+            erstellen.erstellen_und_speichern(formularEingaben);
         }
     }
 }

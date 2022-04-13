@@ -16,8 +16,8 @@ public class ErstellenDelegate implements JavaDelegate {
         String anlageTyp = (String) formularEingaben.get("anlageTyp");
         Anlegen anlegen = factory.neueInhalteAnlegen(anlageTyp);
         anlegen.lade_Entities(formularEingaben);
-        delegateExecution.setVariables(formularEingaben);
         formularEingaben.put("speichern", false);
+        delegateExecution.setVariables(formularEingaben);
 
         if((boolean) formularEingaben.get("speichern")){
             anlegen.erstellen_und_speichern(formularEingaben);

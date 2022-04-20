@@ -10,10 +10,10 @@ import org.apache.commons.mail.*;
 
 public class MailService {
 
-    private static final String HOST = "smtp.googlemail.com";
-    private static final String USER = "email.camunda@gmail.com";
-	private static final String PWD = "camunda123";
-    private static final Integer PORT = 587;
+	private static final String HOST = "smtp.googlemail.com";
+	private static final String USER = "iegruppe3testmail@gmail.com";
+	private static final String PWD = "qwertz!23";
+	private static final Integer PORT = 465;
 
     public void sendEmail(String to, String subject, String content) throws EmailException {
         

@@ -11,3 +11,4 @@ camunda.bpm:
     - classpath*:**/*.dmn
     - classpath*:**/*.dmn11.xml
     - classpath*:**/*.form
+    - classpath*:**/*.html

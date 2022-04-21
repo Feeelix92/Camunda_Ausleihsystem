@@ -1,0 +1,109 @@
+{
+  "components": [
+    {
+      "label": "Benutzerdaten :",
+      "type": "textfield",
+      "id": "Field_1e95ivu",
+      "key": "username",
+      "disabled": true,
+      "description": "Name des Nutzers"
+    },
+    {
+      "text": "<br/><hr>",
+      "type": "text",
+      "id": "Field_14guqp3"
+    },
+    {
+      "label": "Artikel der zurückgegeben werden soll :",
+      "type": "textfield",
+      "id": "Field_113z7bj",
+      "key": "artikel",
+      "disabled": true,
+      "description": "Beschreibung des Artikel"
+    },
+    {
+      "type": "textfield",
+      "id": "Field_01z014r",
+      "key": "artikelnummer",
+      "description": "Artikelnummer des Artikel",
+      "disabled": true
+    },
+    {
+      "text": "<br/><hr>\n",
+      "type": "text",
+      "id": "Field_09fsuve"
+    },
+    {
+      "label": "Vorheriger Zustand des Artikel :",
+      "type": "textfield",
+      "id": "Field_19bm6ty",
+      "key": "alter_Zustand",
+      "disabled": true,
+      "description": "Zustand des Artikel bevor der Nutzer diesen ausgeliehen hat."
+    },
+    {
+      "type": "textfield",
+      "id": "Field_1oy5elu",
+      "key": "zustand_Beschreibung",
+      "description": "Beschreibung der ZustandId",
+      "disabled": true
+    },
+    {
+      "text": "<br/><hr>",
+      "type": "text",
+      "id": "Field_18srerz"
+    },
+    {
+      "values": [
+        {
+          "label": "Neu - Neuer Artikel",
+          "value": "1"
+        },
+        {
+          "label": "Keine Gebrauchsspuren",
+          "value": "2"
+        },
+        {
+          "label": "Leichte Gebrauchsspuren - optisch sowie technisch",
+          "value": "3"
+        },
+        {
+          "label": "Merkbare Gebrauchsspuren",
+          "value": "4"
+        },
+        {
+          "label": "Starke Gebrauchsspuren - muss bald ausgewechselt werden",
+          "value": "5"
+        },
+        {
+          "label": "Nicht mehr verleihbar - kaputt oder zu stark beschädigt",
+          "value": "6"
+        }
+      ],
+      "label": "Neuer Zustand :",
+      "type": "select",
+      "id": "Field_1ue43m3",
+      "key": "neuer_Zustand",
+      "description": "Zustand des Artikel nachdem der Nutzer den Gegenstand wieder zurückgegeben hat.",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "action": "submit",
+      "label": "Bestätigen",
+      "type": "button",
+      "id": "Field_13s8xq2",
+      "key": "field_1xuytvt"
+    }
+  ],
+  "type": "default",
+  "id": "rueckgabe_condition",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.0.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.0.0"
+  },
+  "schemaVersion": 4
+}

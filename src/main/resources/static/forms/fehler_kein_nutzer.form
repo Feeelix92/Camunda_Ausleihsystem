@@ -1,0 +1,25 @@
+{
+  "components": [
+    {
+      "text": "# Einen Benutzer mit den angegebenen Daten existiert nicht. \n# Bitte geben sie existierende Nutzeradten ein.",
+      "type": "text",
+      "id": "Field_01gyonx"
+    },
+    {
+      "action": "submit",
+      "label": "Prozess Beenden",
+      "type": "button",
+      "id": "Field_0dlz2g9",
+      "key": "field_00ukfnk"
+    }
+  ],
+  "type": "default",
+  "id": "fehler_kein_nutzer",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.0.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.17.0",
+  "schemaVersion": 4
+}

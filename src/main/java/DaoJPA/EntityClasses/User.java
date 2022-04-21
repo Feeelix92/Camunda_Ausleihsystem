@@ -33,7 +33,7 @@ public class User {
     @Column(name = "Telefonnummer")
     private String telefonnummer;
     @Column(name = "Verifiziert")
-    private boolean verifiziert;
+    private Boolean verifiziert;
 
     //TODO da PW eigentlich nicht so gespeichert und Abgerufen werden sollte
     @Column(name = "Passwort")
@@ -41,11 +41,11 @@ public class User {
 
     //ForeignKey´s
     @Column(name = "BenutzerstatusID")
-    private int benutzerstatusID;
+    private Integer benutzerstatusID;
     @Column(name = "BenutzerscoreID")
-    private int benutzerscoreID;
+    private Integer benutzerscoreID;
     @Column(name = "Rollennummer")
-    private int rollennummer;
+    private Integer rollennummer;
 
     public User(int benutzerID, String name, String vorname, String email) {
         this.benutzerID = benutzerID;
@@ -158,7 +158,7 @@ public class User {
         return benutzerstatusID;
     }
 
-    public void setBenutzerstatusID(int benutzerstatusID) {
+    public void setBenutzerstatusID(Integer benutzerstatusID) {
         this.benutzerstatusID = benutzerstatusID;
     }
 
@@ -166,7 +166,7 @@ public class User {
         return benutzerscoreID;
     }
 
-    public void setBenutzerscoreID(int benutzerscoreID) {
+    public void setBenutzerscoreID(Integer benutzerscoreID) {
         this.benutzerscoreID = benutzerscoreID;
     }
 
@@ -174,7 +174,7 @@ public class User {
         return rollennummer;
     }
 
-    public void setRollennummer(int rollennummer) {
+    public void setRollennummer(Integer rollennummer) {
         this.rollennummer = rollennummer;
     }
 }

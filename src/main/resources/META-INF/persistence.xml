@@ -6,6 +6,9 @@
         <class>DaoJPA.EntityClasses.Article</class>
         <class>DaoJPA.EntityClasses.ArticleType</class>
         <class>DaoJPA.EntityClasses.Category</class>
+        <class>DaoJPA.EntityClasses.Borrow</class>
+        <class>DaoJPA.EntityClasses.BorrowDetails</class>
+        <class>DaoJPA.EntityClasses.Condition</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://databaseurl"/>

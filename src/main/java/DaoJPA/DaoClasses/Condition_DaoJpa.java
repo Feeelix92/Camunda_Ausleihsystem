@@ -1,9 +1,8 @@
 package DaoJPA.DaoClasses;
 
 import DaoJPA.DaoJPA;
-import DaoJPA.EntityClasses.User;
+import DaoJPA.EntityClasses.Condition;
 import DaoJPA.config.JpaEntityManagerFactory;
-
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -15,48 +14,48 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 
-public class User_DaoJpa implements DaoJPA<User> {
+public class Condition_DaoJpa implements DaoJPA<Condition> {
 
     private EntityManager entityManager;
 
-    public User_DaoJpa(EntityManager entityManager){
+    public Condition_DaoJpa(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
 
-    public User_DaoJpa(){
+    public Condition_DaoJpa(){
         entityManager = new JpaEntityManagerFactory().getEntityManager();
     }
 
     @Override
-    public Optional<User> getById(int benutzerID) {
-        return Optional.ofNullable(entityManager.find(User.class,benutzerID));
+    public Optional<Condition> getById(int zustandId) {
+        return Optional.ofNullable(entityManager.find(Condition.class,(short)zustandId));
     }
 
     @Override
-    public List<User> getAll() {
+    public List<Condition> getAll() {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
-        CriteriaQuery<User> cr = cb.createQuery(User.class);
-        Root<User> root = cr.from(User.class);
+        CriteriaQuery<Condition> cr = cb.createQuery(Condition.class);
+        Root<Condition> root = cr.from(Condition.class);
         cr.select(root);
 
         Query query = entityManager.createQuery(cr);
-        List<User> userList = query.getResultList();
+        List<Condition> conditionList = query.getResultList();
 
-        return userList;
+        return conditionList;
     }
 
     @Override
-    public void save(User user) {
-        executeInsideTransaction(entityManager -> entityManager.persist(user));
+    public void save(Condition condition) {
+        executeInsideTransaction(entityManager -> entityManager.persist(condition));
     }
 
     @Override
-    public void update(User user) {
+    public void update(Condition condition) {
 
     }
 
     @Override
-    public void delete(User user) {
+    public void delete(Condition condition) {
 
     }
 

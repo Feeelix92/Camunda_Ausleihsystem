@@ -1,9 +1,6 @@
 package DaoJPA.config;
 
-import DaoJPA.EntityClasses.Article;
-import DaoJPA.EntityClasses.ArticleType;
-import DaoJPA.EntityClasses.Category;
-import DaoJPA.EntityClasses.User;
+import DaoJPA.EntityClasses.*;
 import com.mysql.cj.jdbc.MysqlDataSource;
 import org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl;
 import org.hibernate.jpa.boot.internal.PersistenceUnitInfoDescriptor;
@@ -53,7 +50,7 @@ public class JpaEntityManagerFactory {
 
     //Hier dann die Entity Klassen auswählen !!!!!!
     protected Class[] getEntities() {
-        return new Class[]{User.class, Article.class, ArticleType.class, Category.class};
+        return new Class[]{User.class, Article.class, ArticleType.class, Category.class, Borrow.class, BorrowDetails.class,Condition.class};
     }
 
     protected DataSource getMysqlDataSource() {

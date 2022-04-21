@@ -1,9 +1,8 @@
 package DaoJPA.DaoClasses;
 
 import DaoJPA.DaoJPA;
-import DaoJPA.EntityClasses.User;
+import DaoJPA.EntityClasses.BorrowDetails;
 import DaoJPA.config.JpaEntityManagerFactory;
-
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -15,48 +14,48 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 
-public class User_DaoJpa implements DaoJPA<User> {
+public class BorrowDetails_DaoJpa implements DaoJPA<BorrowDetails> {
 
     private EntityManager entityManager;
 
-    public User_DaoJpa(EntityManager entityManager){
+    public BorrowDetails_DaoJpa(EntityManager entityManager){
         this.entityManager = entityManager;
     }
 
-    public User_DaoJpa(){
+    public BorrowDetails_DaoJpa(){
         entityManager = new JpaEntityManagerFactory().getEntityManager();
     }
 
     @Override
-    public Optional<User> getById(int benutzerID) {
-        return Optional.ofNullable(entityManager.find(User.class,benutzerID));
+    public Optional<BorrowDetails> getById(int ausleihnummer) {
+        return Optional.ofNullable(entityManager.find(BorrowDetails.class,ausleihnummer));
     }
 
     @Override
-    public List<User> getAll() {
+    public List<BorrowDetails> getAll() {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
-        CriteriaQuery<User> cr = cb.createQuery(User.class);
-        Root<User> root = cr.from(User.class);
+        CriteriaQuery<BorrowDetails> cr = cb.createQuery(BorrowDetails.class);
+        Root<BorrowDetails> root = cr.from(BorrowDetails.class);
         cr.select(root);
 
         Query query = entityManager.createQuery(cr);
-        List<User> userList = query.getResultList();
+        List<BorrowDetails> borrowDetailsList = query.getResultList();
 
-        return userList;
+        return borrowDetailsList;
     }
 
     @Override
-    public void save(User user) {
-        executeInsideTransaction(entityManager -> entityManager.persist(user));
+    public void save(BorrowDetails borrowDetails) {
+        executeInsideTransaction(entityManager -> entityManager.persist(borrowDetails));
     }
 
     @Override
-    public void update(User user) {
+    public void update(BorrowDetails borrowDetails) {
 
     }
 
     @Override
-    public void delete(User user) {
+    public void delete(BorrowDetails borrowDetails) {
 
     }
 

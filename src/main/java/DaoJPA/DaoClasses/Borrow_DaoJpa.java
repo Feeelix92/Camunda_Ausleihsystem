@@ -1,9 +1,8 @@
 package DaoJPA.DaoClasses;
 
 import DaoJPA.DaoJPA;
-import DaoJPA.EntityClasses.User;
+import DaoJPA.EntityClasses.Borrow;
 import DaoJPA.config.JpaEntityManagerFactory;
-
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -15,48 +14,48 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 
-public class User_DaoJpa implements DaoJPA<User> {
+public class Borrow_DaoJpa implements DaoJPA<Borrow> {
 
     private EntityManager entityManager;
 
-    public User_DaoJpa(EntityManager entityManager){
+    public Borrow_DaoJpa(EntityManager entityManager){
         this.entityManager = entityManager;
     }
 
-    public User_DaoJpa(){
+    public Borrow_DaoJpa(){
         entityManager = new JpaEntityManagerFactory().getEntityManager();
     }
 
     @Override
-    public Optional<User> getById(int benutzerID) {
-        return Optional.ofNullable(entityManager.find(User.class,benutzerID));
+    public Optional<Borrow> getById(int ausleihnummer) {
+        return Optional.ofNullable(entityManager.find(Borrow.class,ausleihnummer));
     }
 
     @Override
-    public List<User> getAll() {
+    public List<Borrow> getAll() {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
-        CriteriaQuery<User> cr = cb.createQuery(User.class);
-        Root<User> root = cr.from(User.class);
+        CriteriaQuery<Borrow> cr = cb.createQuery(Borrow.class);
+        Root<Borrow> root = cr.from(Borrow.class);
         cr.select(root);
 
         Query query = entityManager.createQuery(cr);
-        List<User> userList = query.getResultList();
+        List<Borrow> borrowList = query.getResultList();
 
-        return userList;
+        return borrowList;
     }
 
     @Override
-    public void save(User user) {
-        executeInsideTransaction(entityManager -> entityManager.persist(user));
+    public void save(Borrow borrow) {
+        executeInsideTransaction(entityManager -> entityManager.persist(borrow));
     }
 
     @Override
-    public void update(User user) {
+    public void update(Borrow borrow) {
 
     }
 
     @Override
-    public void delete(User user) {
+    public void delete(Borrow borrow) {
 
     }
 

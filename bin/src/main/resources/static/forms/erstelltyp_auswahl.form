@@ -1,0 +1,35 @@
+{
+  "components": [
+    {
+      "values": [
+        {
+          "value": "kategorie",
+          "label": "Kategorie"
+        },
+        {
+          "label": "Artikeltyp",
+          "value": "artikeltyp"
+        },
+        {
+          "label": "Artikel",
+          "value": "artikel"
+        }
+      ],
+      "label": "Auswahl Erstelltyp",
+      "type": "select",
+      "id": "Field_0io88jg",
+      "key": "erstellTyp",
+      "validate": {
+        "required": true
+      },
+      "description": "Wählen Sie aus was Sie erstellen möchten."
+    }
+  ],
+  "schemaVersion": 4,
+  "type": "default",
+  "id": "erstelltypAuswahl",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.0.0"
+  }
+}

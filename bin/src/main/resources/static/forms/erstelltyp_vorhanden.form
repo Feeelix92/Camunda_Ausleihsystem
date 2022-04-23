@@ -1,0 +1,36 @@
+{
+  "components": [
+    {
+      "text": "<h3>Der Anlagetyp mit dem gewünschten Namen ist bereits vorhanden.</h3>",
+      "type": "text",
+      "id": "Field_11ojitv"
+    },
+    {
+      "values": [
+        {
+          "label": "Ja",
+          "value": "ja"
+        },
+        {
+          "label": "Nein",
+          "value": "nein"
+        }
+      ],
+      "label": "Möchten Sie Ihre Eingabe korrigieren?",
+      "type": "select",
+      "id": "Field_1b10y0t",
+      "key": "antwortAnlageFehler",
+      "validate": {
+        "required": true
+      },
+      "description": "Wenn Sie Ja auswählen, gelangen Sie zurück zur Dateneingabe."
+    }
+  ],
+  "schemaVersion": 4,
+  "type": "default",
+  "id": "ersteltypVorhanden",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.0.0"
+  }
+}

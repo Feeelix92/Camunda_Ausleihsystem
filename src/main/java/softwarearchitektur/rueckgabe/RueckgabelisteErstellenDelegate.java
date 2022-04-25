@@ -39,7 +39,7 @@ public class RueckgabelisteErstellenDelegate implements JavaDelegate {
         //List<Borrow> allBorrows = ausleihHandler.getAllUserBorrows(benutzerId);
 
         //Alle Ausleihdetails des Nutzers holen, damit nur die Artikelnummern
-        List<Integer> allArticleNumbers = ausleihHandler.getAllBorrowedArticleNumbers(benutzerId);
+        List<Integer> allArticleNumbers = ausleihHandler.getAllBorrowedArticleNumbers(benutzerId,delegateExecution);
 
         //Alle Artikelbeschreibungen holen
         //In Hashmap hinterlegen (Artikelnummer, Beschreibung)

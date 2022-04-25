@@ -22,15 +22,15 @@ public class ArtikelDataHandler {
         return article;
     }
 
-    public void changeArticleAvailability(boolean availability, int artikelnummer){
-        Article article = artikelDao.getById(artikelnummer).get();
+    public void changeArticleAvailability(boolean availability, Article article){
         article.setVerfuegbar(availability);
-        artikelDao.save(article);
     }
 
-    public void changeCondition(short conditionId, int arikelnummer){
-        Article article = artikelDao.getById(arikelnummer).get();
+    public void changeCondition(short conditionId, Article article){
         article.setZustandId(conditionId);
+    }
+
+    public void updateArticle(Article article){
         artikelDao.save(article);
     }
 

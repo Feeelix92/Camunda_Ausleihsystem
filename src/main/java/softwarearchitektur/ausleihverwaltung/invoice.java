@@ -1,7 +1,6 @@
 package softwarearchitektur.ausleihverwaltung;
 
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -73,13 +72,14 @@ public class invoice {
         n = artikel.size();
     }
 
-    void WriteInvoice(){
+    ByteArrayInputStream WriteInvoice(){
         //get the page
         PDPage mypage = invc.getPage(0);
         try {
             //Prepare Content Stream
             PDPageContentStream cs = new PDPageContentStream(invc, mypage);
 
+            //TODO gibt irgendeinen error in Zeile 85 // geht allerdings trotzdem
             //Writing Single Line text
             //Writing the Invoice title
             cs.beginText();
@@ -195,11 +195,19 @@ public class invoice {
             //Close the content stream
             cs.close();
             //Save the PDF
-            invc.save("C:\\Users\\Dennis\\Desktop\\testpdf\\test.pdf");
+            ByteArrayOutputStream out = new ByteArrayOutputStream();
+            invc.save(out);
+            invc.close();
+            ByteArrayInputStream in = new ByteArrayInputStream(out.toByteArray());
+
+            //invc.save("src/main/resources/pdfSave/test.pdf");
+
+            return in;
 
         } catch (IOException e) {
             e.printStackTrace();
         }
+       return null;
     }
 
 

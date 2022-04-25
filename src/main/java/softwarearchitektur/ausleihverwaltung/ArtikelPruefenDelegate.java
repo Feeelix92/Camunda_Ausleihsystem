@@ -1,4 +1,4 @@
-package softwarearchitektur.ausleihsystem;
+package softwarearchitektur.ausleihverwaltung;
 
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
@@ -22,16 +22,16 @@ public class ArtikelPruefenDelegate implements JavaDelegate {
 		
 		int artikelNr = (int) execution.getVariable("artikel");
 		
-		ArrayList<Integer> verfügbareArtikel = new ArrayList<Integer>();
-		verfügbareArtikel.add(1);
-		verfügbareArtikel.add(2);
+		ArrayList<Integer> verfuegbareArtikel = new ArrayList<Integer>();
+		verfuegbareArtikel.add(1);
+		verfuegbareArtikel.add(2);
 		
-		boolean verfügbar = false;
+		boolean verfuegbar = false;
 			
-		verfügbar = verfügbareArtikel.contains(artikelNr);
+		verfuegbar = verfuegbareArtikel.contains(artikelNr);
 		
 		execution.setVariable("artikelNr", artikelNr);
-		execution.setVariable("artikel_verfuegbar", verfügbar);
+		execution.setVariable("artikel_verfuegbar", verfuegbar);
 		
 	}
 

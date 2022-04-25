@@ -18,6 +18,12 @@ public class Article {
         this.einkaufspreis = einkaufspreis;
     }
 
+    public Article(String beschreibung, String hersteller_art_nr, BigDecimal einkaufspreis){
+        this.beschreibung = beschreibung;
+        this.hersteller_art_nr = hersteller_art_nr;
+        this.einkaufspreis = einkaufspreis;
+    }
+
     public Article() {}
 
     //---------- Primal Key ---------- //

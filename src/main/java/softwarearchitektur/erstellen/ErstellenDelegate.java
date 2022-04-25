@@ -11,7 +11,6 @@ public class ErstellenDelegate implements JavaDelegate {
     @Override
     public void execute(DelegateExecution delegateExecution){
         ErstellenFactory factory = new ErstellenFactory();
-
         Map<String, Object> formularEingaben = delegateExecution.getVariables();
         String erstellTyp = (String) formularEingaben.get("erstellTyp");
         Erstellen erstellen = factory.neueInhalteErstellen(erstellTyp);

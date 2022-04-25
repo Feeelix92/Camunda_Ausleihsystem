@@ -1,6 +1,5 @@
 package softwarearchitektur.ausleihverwaltung;
 
-import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
 import softwarearchitektur.artikelverwaltung.ArtikelDataHandler;
@@ -30,7 +29,6 @@ public class MerkzettelInformierenDelegate implements JavaDelegate {
 
         delegateExecution.setVariable("ArtikeltypID",artikelTypId);
 
-        
 
 //        RuntimeService runtimeService = delegateExecution.getProcessEngineServices().getRuntimeService();
 //

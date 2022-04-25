@@ -19,6 +19,7 @@ public class Artikel implements Erstellen {
     public void erstellen_und_speichern(Map<String, Object> formularEingaben){
         //Hier wird einfach ein Java Objekt von Artikel erstellt und initialisiert mit den angegebenen werten
         String artikelName = (String) formularEingaben.get("artikelName");
+
         String artikelBeschreibung = (String) formularEingaben.get("artikelBeschreibung");
         short lagernummer = (short) formularEingaben.get("lagernummer");
         short zustandID = (short) formularEingaben.get("zustandID");
@@ -27,7 +28,9 @@ public class Artikel implements Erstellen {
         BigDecimal einkaufspreis = (BigDecimal) formularEingaben.get("einkaufspreis");
         short artikelTypID = (short) formularEingaben.get("artikelTypID");
 
-        Article article = new Article(99, artikelBeschreibung, herstellerArtNr, einkaufspreis);
+        Article article = new Article(artikelBeschreibung, herstellerArtNr, einkaufspreis);
+
+        System.out.println("Test1111");
 
         //Das objekt kann danach noch weiter angepasst bzw. geändert werden
         article.setZustandId(zustandID);

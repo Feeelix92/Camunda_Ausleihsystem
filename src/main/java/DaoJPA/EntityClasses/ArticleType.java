@@ -16,6 +16,11 @@ public class ArticleType {
         this.beschreibung = beschreibung;
     }
 
+    public ArticleType(String name, String beschreibung){
+        this.name = name;
+        this.beschreibung = beschreibung;
+    }
+
     public ArticleType(){}
 
     //---------- Primal Key ---------- //

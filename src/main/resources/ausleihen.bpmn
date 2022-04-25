@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_0wkb7bz" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.4.0">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_0wkb7bz" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.0.0">
   <bpmn:collaboration id="Collaboration_0usbfm5">
     <bpmn:participant id="Participant_0ji8u30" name="Ausleihsystem" processRef="Ausleihen" />
   </bpmn:collaboration>
@@ -58,7 +58,7 @@
       <bpmn:incoming>Flow_0dhhfga</bpmn:incoming>
       <bpmn:outgoing>Flow_1uzc62b</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:userTask id="Activity_156m9d3" name="Artikel anfragen" camunda:formKey="embedded:app:forms/artikelliste.html" camunda:assignee="demo">
+    <bpmn:userTask id="Activity_156m9d3" name="Artikel anfragen" camunda:formKey="embedded:/forms/artikelliste.html" camunda:assignee="demo">
       <bpmn:incoming>Flow_0ic8pa5</bpmn:incoming>
       <bpmn:outgoing>Flow_0l4quwf</bpmn:outgoing>
     </bpmn:userTask>
@@ -120,6 +120,10 @@
       <bpmndi:BPMNShape id="Lane_1qr2z0n_di" bpmnElement="Lane_1qr2z0n" isHorizontal="true">
         <dc:Bounds x="155" y="114" width="1515" height="200" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0ic8pa5_di" bpmnElement="Flow_0ic8pa5">
+        <di:waypoint x="360" y="200" />
+        <di:waypoint x="450" y="200" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0d15x4z_di" bpmnElement="Flow_0d15x4z">
         <di:waypoint x="970" y="330" />
         <di:waypoint x="970" y="210" />
@@ -164,10 +168,6 @@
       <bpmndi:BPMNEdge id="Flow_1l4r7a1_di" bpmnElement="Flow_1l4r7a1">
         <di:waypoint x="215" y="200" />
         <di:waypoint x="260" y="200" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0ic8pa5_di" bpmnElement="Flow_0ic8pa5">
-        <di:waypoint x="360" y="200" />
-        <di:waypoint x="450" y="200" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="179" y="182" width="36" height="36" />

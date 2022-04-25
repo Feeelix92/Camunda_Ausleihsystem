@@ -1,4 +1,4 @@
-package src.main.java.softwarearchitektur.ausleihverwaltung;
+package softwarearchitektur.ausleihverwaltung;
 
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
@@ -25,8 +25,8 @@ public class ArtikelInWarenkorbDelegate implements JavaDelegate {
 		
 		HashMap<Integer, String> artikelListe = (HashMap<Integer, String>) execution.getVariable("ARTIKEL_HASH");
 		
-		String artikelBestätigen = artikelListe.get((int) execution.getVariable("artikelNr"));
-		execution.setVariable("artikelBestaetigen", artikelBestätigen);
+		String artikelBestaetigen = artikelListe.get((int) execution.getVariable("artikelNr"));
+		execution.setVariable("artikelBestaetigen", artikelBestaetigen);
 		
 	}
 

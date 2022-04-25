@@ -1,4 +1,4 @@
-package src.main.java.softwarearchitektur.ausleihverwaltung;
+package softwarearchitektur.ausleihverwaltung;
 
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
@@ -31,5 +31,4 @@ public class ArtikellisteErstellenDelegate implements JavaDelegate {
 		execution.setVariable("ARTIKEL_HASH", artikelliste);
 
 	}
-
 }

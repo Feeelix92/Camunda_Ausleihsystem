@@ -1,4 +1,4 @@
-package src.main.java.softwarearchitektur.ausleihverwaltung;
+package softwarearchitektur.mailverwaltung;
 
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
@@ -15,8 +15,8 @@ public class SendEmailDelegate implements JavaDelegate{
         HashMap<Integer, String> alleArtikel = (HashMap<Integer, String>) execution.getVariable("ALLE_ARTIKEL"); 
         String artikelTitel = alleArtikel.get(artikelNr);
         System.out.println(artikelTitel);
-        content = content.replace("<#content>","Guten Tag, es tut uns leid Ihnen mitteilen zu müssen, dass Ihr gewählter Artikel nicht verfügbar ist.");
-        new MailService().sendEmail((String)execution.getVariable("mail"),"Artikel-Verfügbarkeit", content);  
+        content = content.replace("<#content>","Guten Tag, es tut uns leid Ihnen mitteilen zu mï¿½ssen, dass Ihr gewï¿½hlter Artikel nicht verfï¿½gbar ist.");
+        new MailService().sendEmail((String)execution.getVariable("mail"),"Artikel-Verfï¿½gbarkeit", content);  
 	}
 
 }

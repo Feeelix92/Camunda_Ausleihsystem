@@ -1,4 +1,4 @@
-package src.main.java.softwarearchitektur.ausleihverwaltung;
+package softwarearchitektur.ausleihverwaltung;
 
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
@@ -10,10 +10,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class NutzerPrüfenDelegate implements JavaDelegate {
+public class NutzerPruefenDelegate implements JavaDelegate {
 	
 
-	public NutzerPrüfenDelegate() {
+	public NutzerPruefenDelegate() {
 
 	}
 

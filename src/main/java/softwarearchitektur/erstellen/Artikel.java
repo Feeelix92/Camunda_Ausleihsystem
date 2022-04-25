@@ -27,7 +27,7 @@ public class Artikel implements Erstellen {
         Double einkaufspreis = (Double) formularEingaben.get("einkaufspreis");
 //        short artikelTypID = (short) formularEingaben.get("artikelTypID");
 
-        Article article = new Article(500, artikelBeschreibung, herstellerArtNr, BigDecimal.valueOf(einkaufspreis));
+        Article article = new Article(999, artikelBeschreibung, herstellerArtNr, BigDecimal.valueOf(einkaufspreis));
 //        Article article = new Article(55, artikelBeschreibung, "22",BigDecimal.valueOf(21.20));
 
         //Das objekt kann danach noch weiter angepasst bzw. geändert werden
@@ -59,7 +59,7 @@ public class Artikel implements Erstellen {
     @Override
     public void erstellen_und_verbinden(Map<String, Object> formularEingaben){
         //Erstellen eines Artikeltyps wie in der Methode zum Artikel erstellen
-        ArticleType articleType = new ArticleType((short)10,"Test Type","Das ist eine Testbeschreibung !!!!!");
+        ArticleType articleType = new ArticleType("Test Type","Das ist eine Testbeschreibung !!!!!");
 
         Article article = articleDaoJPA.getById(99).get();
 

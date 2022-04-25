@@ -7,7 +7,7 @@ import javax.inject.Named;
 import java.util.Map;
 
 @Named
-public class ErstellenDelegate implements JavaDelegate {
+public class EntitaetenLadenDelegate implements JavaDelegate {
     @Override
     public void execute(DelegateExecution delegateExecution){
         ErstellenFactory factory = new ErstellenFactory();
@@ -18,7 +18,7 @@ public class ErstellenDelegate implements JavaDelegate {
 
         // Entitäten aus DB laden
         Map<String, Object> formularEingaben = delegateExecution.getVariables();
-        erstellen.erstellen_und_speichern(formularEingaben);
-        System.out.println("OK");
+        erstellen.lade_entitaeten(formularEingaben);
+        delegateExecution.setVariables(formularEingaben);
     }
 }

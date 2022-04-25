@@ -30,7 +30,7 @@ public class Example_for_Using_Dao {
 
     private static void artikel_erstellen_und_speichern(){
         //Hier wird einfach ein Java Objekt von Artikel erstellt und initialisiert mit den angegebenen werten
-        Article article = new Article(99,"Das ist ein Testartikel","Test Hersteller Art- Nummer", BigDecimal.valueOf(12.99));
+        Article article = new Article(123,"Das ist ein Testartikel","Test Hersteller Art- Nummer", BigDecimal.valueOf(12.99));
 
         //Das objekt kann danach noch weiter angepasst bzw. geändert werden
         article.setZustandId((short) 1);
@@ -55,7 +55,7 @@ public class Example_for_Using_Dao {
 
     public static void artikeltyp_erstellen_und_mit_artikel_verbinden(){
         //Erstellen eines Artikeltyps wie in der Methode zum Artikel erstellen
-        ArticleType articleType = new ArticleType((short)10,"Test Type","Das ist eine Testbeschreibung !!!!!");
+        ArticleType articleType = new ArticleType("Test Type","Das ist eine Testbeschreibung !!!!!");
 
         Article article = articleDaoJPA.getById(99).get();
 

@@ -1,11 +1,30 @@
 package softwarearchitektur.erstellen;
 
+import DaoJPA.DaoClasses.ArticleType_DaoJpa;
+import DaoJPA.DaoClasses.Article_DaoJpa;
+import DaoJPA.DaoJPA;
+import DaoJPA.EntityClasses.Article;
+import DaoJPA.EntityClasses.ArticleType;
+
+import java.math.BigDecimal;
 import java.util.Map;
 
 public class Artikeltyp implements Erstellen {
 
+    //Hier die Dao definieren die benötigt werden
+    private static final DaoJPA<ArticleType> articleTypeDaoJPA = new ArticleType_DaoJpa();
+
     @Override
     public void erstellen_und_speichern(Map<String, Object> formularEingaben){
+        //Hier wird einfach ein Java Objekt von Artikel erstellt und initialisiert mit den angegebenen werten
+        String artikelTypName = (String) formularEingaben.get("artikelName");
+        String artikelTyBeschreibung = (String) formularEingaben.get("artikelBeschreibung");
+
+        ArticleType artikelTyp = new ArticleType(artikelTypName, artikelTyBeschreibung);
+//        Article article = new Article(55, artikelBeschreibung, "22",BigDecimal.valueOf(21.20));
+
+        //Speichern in der Datenbank über Dao Pattern
+        articleTypeDaoJPA.save(artikelTyp); //<- save methode Nutzen um den artikel dann in der DB zu speichern
 
     }
     @Override

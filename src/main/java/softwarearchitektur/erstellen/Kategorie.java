@@ -13,10 +13,10 @@ public class Kategorie implements Erstellen {
     @Override
     public void erstellen_und_speichern(Map<String, Object> formularEingaben){
         //Hier wird einfach ein Java Objekt von Kategorie erstellt und initialisiert mit den angegebenen werten
-        Category category = new Category();
-        category.setName((String) formularEingaben.get("kategorieName"));
-        category.setBeschreibung((String) formularEingaben.get("kategorieBeschreibung"));
-        category.setUebergeordnete_Kategorie((String) formularEingaben.get("uebergeordneteKategorie"));
+        String kategorieName = (String) formularEingaben.get("kategorieName");
+        String kategorieBeschreibung = (String) formularEingaben.get("kategorieBeschreibung");
+        Category category = new Category(kategorieName, kategorieBeschreibung);
+//        category.setUebergeordnete_Kategorie((String) formularEingaben.get("uebergeordneteKategorie"));
 
         //Speichern in der Datenbank über Dao Pattern
         categoryDaoJPA.save(category); //<- save methode Nutzen um die Kategorie dann in der DB zu speichern
@@ -52,7 +52,6 @@ public class Kategorie implements Erstellen {
     public void lade_entitaeten(Map<String, Object> formularEingaben) {
         formularEingaben.put("kategorieName", "");
         formularEingaben.put("kategorieBeschreibung", "");
-        formularEingaben.put("uebergeordneteKategorie", "");
     }
 
 }

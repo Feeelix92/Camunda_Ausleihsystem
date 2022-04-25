@@ -27,14 +27,18 @@ public class MerkzettelInformierenDelegate implements JavaDelegate {
     private void benachrichtigeMerkzettel(DelegateExecution delegateExecution){
         int artikelTypId = artikelHandler.getById(artikelnummer).getArtikelTypId();
         Map<String, Object> variables = new HashMap<String, Object>();
-        variables.put("artikelTypId", artikelTypId);
-        RuntimeService runtimeService = delegateExecution.getProcessEngineServices().getRuntimeService();
 
-        //TODO das richtige muss noch auskommentiert werden !!!!!!!
-//        //Wenn Process gestartet werden soll
-//        runtimeService.startProcessInstanceByMessage("Merkzettel_artikelnummer",variables);
+        delegateExecution.setVariable("ArtikeltypID",artikelTypId);
+
+        
+
+//        RuntimeService runtimeService = delegateExecution.getProcessEngineServices().getRuntimeService();
 //
-//        //Wenn Process nur auf antwort wartet...
-//        runtimeService.correlateMessage("Merkzettel_artikelTypId",variables);
+//        //TODO das richtige muss noch auskommentiert werden !!!!!!!
+////        //Wenn Process gestartet werden soll
+////        runtimeService.startProcessInstanceByMessage("ArtikeltypID",variables);
+////
+////        //Wenn Process nur auf antwort wartet...
+////        runtimeService.correlateMessage("Merkzettel_artikelTypId",variables);
     }
 }

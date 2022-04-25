@@ -73,10 +73,6 @@
       <bpmn:outgoing>Flow_0ugkw4n</bpmn:outgoing>
     </bpmn:parallelGateway>
     <bpmn:sequenceFlow id="Flow_1nh1qx5" sourceRef="Activity_16l2j4t" targetRef="Gateway_15qbl4a" />
-    <bpmn:manualTask id="Activity_1aefjaj" name="Rechnung Senden">
-      <bpmn:incoming>Flow_0904yoi</bpmn:incoming>
-      <bpmn:outgoing>Flow_1a0yznp</bpmn:outgoing>
-    </bpmn:manualTask>
     <bpmn:serviceTask id="Activity_12wknfv" name="Zustand /  Verfügbarkeit aktualisieren" camunda:class="softwarearchitektur.artikelverwaltung.RueckgabeArtikelAktualisierenDelegate">
       <bpmn:incoming>Flow_1ye7jdi</bpmn:incoming>
       <bpmn:outgoing>Flow_1je7jd9</bpmn:outgoing>
@@ -105,6 +101,10 @@
       <bpmn:incoming>Flow_19yaajy</bpmn:incoming>
       <bpmn:outgoing>Flow_0904yoi</bpmn:outgoing>
     </bpmn:userTask>
+    <bpmn:sendTask id="Activity_1aefjaj" name="Rechnung Senden" camunda:class="softwarearchitektur.mailverwaltung.RechnungSendenDelegate">
+      <bpmn:incoming>Flow_0904yoi</bpmn:incoming>
+      <bpmn:outgoing>Flow_1a0yznp</bpmn:outgoing>
+    </bpmn:sendTask>
     <bpmn:textAnnotation id="TextAnnotation_0keo0te">
       <bpmn:text>Überprüfen ob es Nutzer mit dem Username &amp; E-Mail gibt</bpmn:text>
     </bpmn:textAnnotation>
@@ -150,10 +150,6 @@ Name: softwarearchitektur.ausleihverwaltung.MerkzettelInformierenDelegate</bpmn:
       <bpmn:text>Name: softwarearchitektur.mailverwaltung.RechnungSendenDelegate</bpmn:text>
     </bpmn:textAnnotation>
     <bpmn:association id="Association_0gnblh9" sourceRef="Activity_1aefjaj" targetRef="TextAnnotation_1a3tmye" />
-    <bpmn:textAnnotation id="TextAnnotation_0g3y02g">
-      <bpmn:text>TODO !!!!!!</bpmn:text>
-    </bpmn:textAnnotation>
-    <bpmn:association id="Association_0gx4c2j" sourceRef="Activity_1aefjaj" targetRef="TextAnnotation_0g3y02g" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Rueckgabe_Process">
@@ -169,11 +165,9 @@ Name: softwarearchitektur.ausleihverwaltung.MerkzettelInformierenDelegate</bpmn:
         <dc:Bounds x="1910" y="543" width="100" height="113" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="TextAnnotation_0g3y02g_di" bpmnElement="TextAnnotation_0g3y02g">
-        <dc:Bounds x="1630" y="220" width="100" height="30" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="TextAnnotation_1a3tmye_di" bpmnElement="TextAnnotation_1a3tmye">
-        <dc:Bounds x="1550" y="110" width="100" height="95" />
+        <dc:Bounds x="1550" y="110" width="99.98924268502583" height="94.987091222031" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1nh1qx5_di" bpmnElement="Flow_1nh1qx5">
         <di:waypoint x="1300" y="410" />
@@ -346,11 +340,11 @@ Name: softwarearchitektur.ausleihverwaltung.MerkzettelInformierenDelegate</bpmn:
           <dc:Bounds x="2034" y="435" width="74" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1bnup3x_di" bpmnElement="Activity_1aefjaj">
-        <dc:Bounds x="1550" y="300" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0kec1fv_di" bpmnElement="Activity_0pozlru">
         <dc:Bounds x="1410" y="300" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_15gjy8t_di" bpmnElement="Activity_1aefjaj">
+        <dc:Bounds x="1550" y="300" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Association_1v956zt_di" bpmnElement="Association_1v956zt">
         <di:waypoint x="280" y="370" />
@@ -387,10 +381,6 @@ Name: softwarearchitektur.ausleihverwaltung.MerkzettelInformierenDelegate</bpmn:
       <bpmndi:BPMNEdge id="Association_1sks24n_di" bpmnElement="Association_1sks24n">
         <di:waypoint x="1960" y="450" />
         <di:waypoint x="1960" y="543" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Association_0gx4c2j_di" bpmnElement="Association_0gx4c2j">
-        <di:waypoint x="1630" y="300" />
-        <di:waypoint x="1669" y="250" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Association_0gnblh9_di" bpmnElement="Association_0gnblh9">
         <di:waypoint x="1600" y="300" />

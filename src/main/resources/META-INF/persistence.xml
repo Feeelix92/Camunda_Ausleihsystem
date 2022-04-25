@@ -9,6 +9,7 @@
         <class>DaoJPA.EntityClasses.Borrow</class>
         <class>DaoJPA.EntityClasses.BorrowDetails</class>
         <class>DaoJPA.EntityClasses.Condition</class>
+        <class>DaoJPA.EntityClasses.Invoice</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://databaseurl"/>

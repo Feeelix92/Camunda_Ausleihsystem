@@ -50,7 +50,7 @@ public class JpaEntityManagerFactory {
 
     //Hier dann die Entity Klassen auswählen !!!!!!
     protected Class[] getEntities() {
-        return new Class[]{User.class, Article.class, ArticleType.class, Category.class, Borrow.class, BorrowDetails.class,Condition.class};
+        return new Class[]{User.class, Article.class, ArticleType.class, Category.class, Borrow.class, BorrowDetails.class,Condition.class,Invoice.class};
     }
 
     protected DataSource getMysqlDataSource() {

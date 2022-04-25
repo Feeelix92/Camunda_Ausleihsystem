@@ -41,7 +41,7 @@
       </bpmn:dataOutputAssociation>
     </bpmn:userTask>
     <bpmn:sequenceFlow id="Flow_1qzvks5" sourceRef="Activity_06ddyat" targetRef="eingabeDaten" />
-    <bpmn:serviceTask id="Activity_06ddyat" name="Entitäten laden" camunda:delegateExpression="#{erstellenDelegate}">
+    <bpmn:serviceTask id="Activity_06ddyat" name="Entitäten laden" camunda:delegateExpression="#{entitaetenLadenDelegate}">
       <bpmn:incoming>Flow_0ol9w81</bpmn:incoming>
       <bpmn:outgoing>Flow_1qzvks5</bpmn:outgoing>
     </bpmn:serviceTask>

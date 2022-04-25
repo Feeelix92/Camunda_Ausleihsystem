@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_0wkb7bz" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.4.0">
   <bpmn:collaboration id="Collaboration_0usbfm5">
-    <bpmn:participant id="Participant_0ji8u30" name="Ausleihsystem" processRef="Process_0a0a9mo" />
+    <bpmn:participant id="Participant_0ji8u30" name="Ausleihsystem" processRef="Ausleihen" />
   </bpmn:collaboration>
-  <bpmn:process id="Process_0a0a9mo" isExecutable="true">
+  <bpmn:process id="Ausleihen" isExecutable="true">
     <bpmn:laneSet id="LaneSet_1xvlm48">
       <bpmn:lane id="Lane_1qr2z0n" name="Nutzer">
         <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>

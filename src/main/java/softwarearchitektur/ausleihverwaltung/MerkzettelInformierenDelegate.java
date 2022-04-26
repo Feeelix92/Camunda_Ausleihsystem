@@ -1,5 +1,6 @@
 package softwarearchitektur.ausleihverwaltung;
 
+import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
 import softwarearchitektur.artikelverwaltung.ArtikelDataHandler;
@@ -26,9 +27,18 @@ public class MerkzettelInformierenDelegate implements JavaDelegate {
     private void benachrichtigeMerkzettel(DelegateExecution delegateExecution){
         int artikelTypId = artikelHandler.getById(artikelnummer).getArtikelTypId();
         Map<String, Object> variables = new HashMap<String, Object>();
-
+        System.out.println(artikelTypId);
         delegateExecution.setVariable("ArtikeltypID",artikelTypId);
 
+        RuntimeService rtm = delegateExecution.getProcessEngineServices().getRuntimeService();
+
+        int cur_ArtikelID = (int) delegateExecution.getVariable("ArtikeltypID");
+        variables.put("ArtikeltypID", cur_ArtikelID);
+
+        rtm.startProcessInstanceByMessage("MerkzettelStarten", variables);
+        variables.clear();
+
+        
 
 //        RuntimeService runtimeService = delegateExecution.getProcessEngineServices().getRuntimeService();
 //

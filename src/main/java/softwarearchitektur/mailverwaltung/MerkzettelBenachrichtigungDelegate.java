@@ -24,10 +24,14 @@ public class MerkzettelBenachrichtigungDelegate implements JavaDelegate{
         rs_name.next();
         String cur_name = rs_name.getString(1);
         ArrayList<String> email_list = (ArrayList<String>) execution.getVariable("email_list");
-        for (String cur_email : email_list) {
-            String content = MailTemplate.mailTemplate;
-            content = content.replace("<#content>","Guten Tag, der von Ihnen vermerkte Artikel, " + cur_name + " ist wieder verfügbar.");
-            new MailService().sendEmail(cur_email,"Artikel-Verfügbarkeit", content);
+        if (email_list != null) {
+            for (String cur_email : email_list) {
+                String content = MailTemplate.mailTemplate;
+                content = content.replace("<#content>", "Guten Tag, der von Ihnen vermerkte Artikel, " + cur_name + " ist wieder verfügbar.");
+                new MailService().sendEmail(cur_email, "Artikel-Verfügbarkeit", content);
+            }
+        }else{
+            System.out.println("Kein Kunde hat diesen Artikel auf seinem Merkzettel!!!");
         }
 
     }

@@ -10,6 +10,12 @@ import javax.persistence.Table;
 public class Category {
 
     //--------- Constructor ---------- //
+    public Category(short kategorienummer, String name, String beschreibung) {
+        this.kategorienummer = kategorienummer;
+        this.name = name;
+        this.beschreibung = beschreibung;
+    }
+
     public Category(String name, String beschreibung) {
         this.name = name;
         this.beschreibung = beschreibung;
@@ -20,41 +26,35 @@ public class Category {
     //---------- Primal Key ---------- //
     @Id
     @Column(name = "Kategorienummer")
-    int kategorienummer;
+    short kategorienummer;
 
     //---------- Properties ---------- //
     @Column(name = "Name")
     String name;
     @Column(name = "Beschreibung")
     String beschreibung;
+
+    //--------- Foreign Key ---------- //
     @Column(name = "Übergeordnete Kategorie")
     String uebergeordnete_Kategorie;
 
-    //--------- Foreign Key ---------- //
-
     //------- Getter & Setter -------- //
-    public int getKategorienummer() {
+    public short getKategorienummer() {
         return kategorienummer;
     }
-    public void setKategorienummer(int kategorienummer) {
+    public void setKategorienummer(short kategorienummer) {
         this.kategorienummer = kategorienummer;
     }
     public String getName() {
         return name;
     }
-    public void setName(String name) {
-        this.name = name;
-    }
+    public void setName(String name) { this.name = name; }
     public String getBeschreibung() {
         return beschreibung;
     }
-    public void setBeschreibung(String beschreibung) {
-        this.beschreibung = beschreibung;
-    }
+    public void setBeschreibung(String beschreibung) { this.beschreibung = beschreibung; }
     public String getUebergeordnete_Kategorie() {
         return uebergeordnete_Kategorie;
     }
-    public void setUebergeordnete_Kategorie(String uebergeordnete_Kategorie) {
-        this.uebergeordnete_Kategorie = uebergeordnete_Kategorie;
-    }
+    public void setUebergeordnete_Kategorie(String uebergeordnete_Kategorie) { this.uebergeordnete_Kategorie = uebergeordnete_Kategorie; }
 }

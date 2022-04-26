@@ -17,15 +17,16 @@ public class Artikeltyp implements Erstellen {
     @Override
     public void erstellen_und_speichern(Map<String, Object> formularEingaben){
         //Hier wird einfach ein Java Objekt von Artikel erstellt und initialisiert mit den angegebenen werten
-        String artikelTypName = (String) formularEingaben.get("artikelName");
-        String artikelTyBeschreibung = (String) formularEingaben.get("artikelBeschreibung");
+        String artikelTypName = (String) formularEingaben.get("artikelTypName");
+        String artikelTyBeschreibung = (String) formularEingaben.get("artikelTypBeschreibung");
 
-        ArticleType artikelTyp = new ArticleType(artikelTypName, artikelTyBeschreibung);
-//        Article article = new Article(55, artikelBeschreibung, "22",BigDecimal.valueOf(21.20));
-
-        //Speichern in der Datenbank über Dao Pattern
-        articleTypeDaoJPA.save(artikelTyp); //<- save methode Nutzen um den artikel dann in der DB zu speichern
-
+        try{
+            ArticleType artikelTyp = new ArticleType(artikelTypName, artikelTyBeschreibung);
+            //Speichern in der Datenbank über Dao Pattern
+            articleTypeDaoJPA.save(artikelTyp); //<- save methode Nutzen um den artikel dann in der DB zu speichern
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     @Override
     public void aus_DB_holen_und_eigenschaften_aendern(Map<String, Object> formularEingaben){

@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 public class Article {
 
     //--------- Constructor ---------- //
-    public Article(int artikelnummer, String beschreibung, String hersteller_art_nr, BigDecimal einkaufspreis) {
+    public Article(short artikelnummer, String beschreibung, String hersteller_art_nr, BigDecimal einkaufspreis) {
         this.artikelnummer = artikelnummer;
         this.beschreibung = beschreibung;
         this.hersteller_art_nr = hersteller_art_nr;
@@ -29,7 +29,7 @@ public class Article {
     //---------- Primal Key ---------- //
     @Id
     @Column(name = "Artikelnummer")
-    int artikelnummer;
+    short artikelnummer;
 
     //---------- Properties ---------- //
     @Column(name = "Beschreibung")
@@ -50,10 +50,10 @@ public class Article {
     short zustandId;
 
     //------- Getter & Setter -------- //
-    public int getArtikelnummer() {
+    public short getArtikelnummer() {
         return artikelnummer;
     }
-    public void setArtikelnummer(int artikelnummer) {
+    public void setArtikelnummer(short artikelnummer) {
         this.artikelnummer = artikelnummer;
     }
     public String getBeschreibung() {

@@ -10,7 +10,8 @@ import javax.persistence.Table;
 public class ArticleType {
 
     //--------- Constructor ---------- //
-    public ArticleType(String name, String beschreibung){
+    public ArticleType(short artikelTypId, String name, String beschreibung){
+        this.artikelTypId =  artikelTypId;
         this.name = name;
         this.beschreibung = beschreibung;
     }

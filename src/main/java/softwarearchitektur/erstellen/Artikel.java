@@ -17,29 +17,26 @@ public class Artikel implements Erstellen {
 
     @Override
     public void erstellen_und_speichern(Map<String, Object> formularEingaben){
-        //Hier wird einfach ein Java Objekt von Artikel erstellt und initialisiert mit den angegebenen werten
+        // Hier wird einfach ein Java Objekt von Artikel erstellt und initialisiert mit den angegebenen werten
         String artikelName = (String) formularEingaben.get("artikelName");
         String artikelBeschreibung = (String) formularEingaben.get("artikelBeschreibung");
-//        short lagernummer = (short) formularEingaben.get("lagernummer");
-//        short zustandID = (short) formularEingaben.get("zustandID");
+        short lagernummer = (short) formularEingaben.get("lagernummer");
+        short zustandID = (short) formularEingaben.get("zustandID");
         String herstellerArtNr = (String) formularEingaben.get("herstellerArtNr");
-//        boolean verfuegbar = (boolean) formularEingaben.get("verfuegbar");
+        boolean verfuegbar = (boolean) formularEingaben.get("verfuegbar");
         Double einkaufspreis = (Double) formularEingaben.get("einkaufspreis");
-//        short artikelTypID = (short) formularEingaben.get("artikelTypID");
+        short artikelTypID = (short) formularEingaben.get("artikelTypID");
 
-        Article article = new Article(999, artikelBeschreibung, herstellerArtNr, BigDecimal.valueOf(einkaufspreis));
-//        Article article = new Article(55, artikelBeschreibung, "22",BigDecimal.valueOf(21.20));
+        // Artikel Objekt erstellen
+        Article article = new Article(artikelBeschreibung, herstellerArtNr, BigDecimal.valueOf(einkaufspreis));
 
-        //Das objekt kann danach noch weiter angepasst bzw. geändert werden
-        article.setZustandId((short) 2);
-        article.setArtikelTypId((short) 2);
-        article.setVerfuegbar(true);
+        // Ergänzende Attribute
+        article.setZustandId(zustandID);
+        article.setArtikelTypId(artikelTypID);
+        article.setVerfuegbar(verfuegbar);
+        article.setLagernummer(lagernummer);
 
-//        article.setZustandId(zustandID);
-//        article.setArtikelTypId(artikelTypID);
-//        article.setVerfuegbar(verfuegbar);
-
-        //Speichern in der Datenbank über Dao Pattern
+        // Speichern in der Datenbank über Dao Pattern
         articleDaoJPA.save(article); //<- save methode Nutzen um den artikel dann in der DB zu speichern
     }
     @Override
@@ -71,12 +68,11 @@ public class Artikel implements Erstellen {
 
     @Override
     public void lade_entitaeten(Map<String, Object> formularEingaben) {
-        formularEingaben.put("artikelName", "");
         formularEingaben.put("artikelBeschreibung", "");
         formularEingaben.put("einkaufspreis", 0.0);
         formularEingaben.put("lagernummer", (short) 0);
         formularEingaben.put("herstellerArtNr", "");
-        formularEingaben.put("verfügbar", true);
+        formularEingaben.put("verfuegbar", true);
         formularEingaben.put("artikelTypID", (short) 0);
         formularEingaben.put("zustandID", (short) 0);
     }

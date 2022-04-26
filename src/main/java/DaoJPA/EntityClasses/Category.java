@@ -10,8 +10,8 @@ import javax.persistence.Table;
 public class Category {
 
     //--------- Constructor ---------- //
-    public Category(short kategorienummer, String name, String beschreibung) {
-        this.kategorienummer = kategorienummer;
+    public Category(int kategorieNummer, String name, String beschreibung) {
+        this.kategorieNummer = kategorieNummer;
         this.name = name;
         this.beschreibung = beschreibung;
     }
@@ -26,24 +26,25 @@ public class Category {
     //---------- Primal Key ---------- //
     @Id
     @Column(name = "Kategorienummer")
-    short kategorienummer;
+    int kategorieNummer;
 
     //---------- Properties ---------- //
     @Column(name = "Name")
     String name;
     @Column(name = "Beschreibung")
     String beschreibung;
-
-    //--------- Foreign Key ---------- //
     @Column(name = "Übergeordnete Kategorie")
     String uebergeordnete_Kategorie;
 
+    //--------- Foreign Key ---------- //
+
+
     //------- Getter & Setter -------- //
-    public short getKategorienummer() {
-        return kategorienummer;
+    public int getKategorienummer() {
+        return kategorieNummer;
     }
-    public void setKategorienummer(short kategorienummer) {
-        this.kategorienummer = kategorienummer;
+    public void setKategorienummer(int kategorieNummer) {
+        this.kategorieNummer = kategorieNummer;
     }
     public String getName() {
         return name;

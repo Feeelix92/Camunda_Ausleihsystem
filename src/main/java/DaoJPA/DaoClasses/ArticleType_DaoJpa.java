@@ -25,7 +25,7 @@ public class ArticleType_DaoJpa implements DaoJPA<ArticleType> {
 
     @Override
     public Optional<ArticleType> getById(int articleTypId) {
-        return Optional.ofNullable(entityManager.find(ArticleType.class,articleTypId));
+        return Optional.ofNullable(entityManager.find(ArticleType.class, articleTypId));
     }
 
     @Override
@@ -56,8 +56,7 @@ public class ArticleType_DaoJpa implements DaoJPA<ArticleType> {
             tx.begin();
             action.accept(entityManager);
             tx.commit();
-        }
-        catch (RuntimeException e) {
+        } catch (RuntimeException e) {
             tx.rollback();
             throw e;
         }

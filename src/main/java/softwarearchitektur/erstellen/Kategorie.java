@@ -3,6 +3,7 @@ package softwarearchitektur.erstellen;
 import DaoJPA.DaoClasses.Category_DaoJpa;
 import DaoJPA.DaoJPA;
 import DaoJPA.EntityClasses.Category;
+import org.camunda.bpm.engine.delegate.BpmnError;
 
 import java.util.Map;
 
@@ -19,18 +20,20 @@ public class Kategorie implements Erstellen {
       try{
           //Hier wird einfach ein Java Objekt Kategorie erstellt und initialisiert mit den angegebenen werten
           Category category = new Category(kategorieName, kategorieBeschreibung);
+
 //        category.setUebergeordnete_Kategorie((String) formularEingaben.get("uebergeordneteKategorie"));
+
           //Speichern in der Datenbank über Dao Pattern
           categoryDaoJPA.save(category); //<- save methode Nutzen um die Kategorie dann in der DB zu speichern
         } catch (Exception e) {
             e.printStackTrace();
-        }
-
+            throw new BpmnError("Kategorie_Vorhanden", "Der gewünschte Kategoriename ist bereits vorhanden");
+      }
     }
     @Override
     public void aus_DB_holen_und_eigenschaften_aendern(Map<String, Object> formularEingaben){
         //Die Methode getById aufrufen um den gegenstand mit der jeweiligen Id zu erhalten
-        Category category = categoryDaoJPA.getById((Short) formularEingaben.get("kategorieNummer")).get(); //.get() nutzen um aus dem aufruf das Objekt zu erhalten
+        Category category = categoryDaoJPA.getById((short) formularEingaben.get("kategorieNummer")).get(); //.get() nutzen um aus dem aufruf das Objekt zu erhalten
         System.out.println(category.getBeschreibung());
 
         //Mithilfe der Getter bzw. Setter Methoden können dann Eigenschaften geändert werden

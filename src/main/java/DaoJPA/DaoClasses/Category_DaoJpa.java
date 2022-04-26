@@ -24,8 +24,8 @@ public class Category_DaoJpa implements DaoJPA<Category> {
     }
 
     @Override
-    public Optional<Category> getById(int kategorienummer) {
-        return Optional.ofNullable(entityManager.find(Category.class,kategorienummer));
+    public Optional<Category> getById(int kategorieNummer) {
+        return Optional.ofNullable(entityManager.find(Category.class, kategorieNummer));
     }
 
     @Override
@@ -56,8 +56,7 @@ public class Category_DaoJpa implements DaoJPA<Category> {
             tx.begin();
             action.accept(entityManager);
             tx.commit();
-        }
-        catch (RuntimeException e) {
+        } catch (RuntimeException e) {
             tx.rollback();
             throw e;
         }

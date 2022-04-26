@@ -1,16 +1,13 @@
 package softwarearchitektur.erstellen;
 
 import DaoJPA.DaoClasses.ArticleType_DaoJpa;
-import DaoJPA.DaoClasses.Article_DaoJpa;
 import DaoJPA.DaoJPA;
-import DaoJPA.EntityClasses.Article;
 import DaoJPA.EntityClasses.ArticleType;
+import org.camunda.bpm.engine.delegate.BpmnError;
 
-import java.math.BigDecimal;
 import java.util.Map;
 
 public class Artikeltyp implements Erstellen {
-
     //Hier die Dao definieren die benötigt werden
     private static final DaoJPA<ArticleType> articleTypeDaoJPA = new ArticleType_DaoJpa();
 
@@ -26,6 +23,7 @@ public class Artikeltyp implements Erstellen {
             articleTypeDaoJPA.save(artikelTyp); //<- save methode Nutzen um den artikel dann in der DB zu speichern
         } catch (Exception e) {
             e.printStackTrace();
+            throw new BpmnError("Artikeltyp_Vorhanden", "Der gewünschte Artikeltyp ist bereits vorhanden");
         }
     }
     @Override

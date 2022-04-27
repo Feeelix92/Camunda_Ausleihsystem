@@ -104,4 +104,19 @@ public class AusleihDataHandler {
         borrow.setRueckgabedatum(rueckgabedatum);
         borrowDao.save(borrow);
     }
+
+    public void insertNewAusleihe(int benutzerId, int artikelNummer, Date ausleihdatum, Date faelligkeitsdatum){
+        Borrow borrow = new Borrow();
+        BorrowDetails borrowDetails = new BorrowDetails();
+        int ausleihNummer= borrowDao.getAll().size() + 1;
+        borrow.setAusleihnummer(ausleihNummer);
+        borrow.setBenutzerId(benutzerId);
+        borrow.setAusleihdatum(ausleihdatum);
+        borrow.setFaelligkeitsdatum(faelligkeitsdatum);
+        borrowDao.save(borrow);
+        borrowDetails.setAusleihnummer(ausleihNummer);
+        borrowDetails.setArtikelnummer(artikelNummer);
+        borrowDetails.setPreis(BigDecimal.valueOf(3.99));
+        borrowDetailsDao.save(borrowDetails);
+    }
 }

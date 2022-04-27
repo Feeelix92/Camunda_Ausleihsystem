@@ -23,8 +23,11 @@ public class VerfuegbarkeitAendern implements JavaDelegate {
         artikelDataHandler = new ArtikelDataHandler();
 
         Article article = artikelDataHandler.getById(artikelNr);
+        article.setVerfuegbar(false);
 
-        artikelDataHandler.changeArticleAvailability(false, article);
+        artikelDataHandler.updateArticle(article);
+
+        //TODO: ausleih und auslehdetails
 
     }
 

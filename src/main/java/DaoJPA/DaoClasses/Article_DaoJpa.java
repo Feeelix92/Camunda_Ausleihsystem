@@ -2,11 +2,15 @@ package DaoJPA.DaoClasses;
 
 import DaoJPA.DaoJPA;
 import DaoJPA.EntityClasses.Article;
+import DaoJPA.EntityClasses.Borrow;
 import DaoJPA.config.JpaEntityManagerFactory;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
@@ -30,8 +34,15 @@ public class Article_DaoJpa implements DaoJPA<Article> {
 
     @Override
     public List<Article> getAll() {
-        Query query = entityManager.createNativeQuery("SELECT * FROM ausleihe.artikel");
-        return  query.getResultList();
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Article> cr = cb.createQuery(Article.class);
+        Root<Article> root = cr.from(Article.class);
+        cr.select(root);
+
+        Query query = entityManager.createQuery(cr);
+        //Query query = entityManager.createNativeQuery("SELECT * FROM ausleihe.artikel");
+        List<Article> articleList = query.getResultList();
+        return  articleList;
     }
 
     @Override

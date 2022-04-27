@@ -13,8 +13,11 @@ public class EntitaetenLadenDelegate implements JavaDelegate {
         ErstellenFactory factory = new ErstellenFactory();
 
         // Erstelltyp
-        String erstellTyp = (String) delegateExecution.getVariable("erstellTyp");
+        String erstellTyp = (String) delegateExecution.getVariable("Erstelltyp");
+        System.out.println(erstellTyp);
+
         Erstellen erstellen = factory.neueInhalteErstellen(erstellTyp);
+        delegateExecution.removeVariable("erstellTyp");
 
         // Entitäten aus DB laden
         Map<String, Object> formularEingaben = delegateExecution.getVariables();

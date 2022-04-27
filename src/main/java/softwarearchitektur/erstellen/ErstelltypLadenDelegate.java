@@ -5,10 +5,7 @@ import org.camunda.bpm.engine.delegate.JavaDelegate;
 import org.camunda.bpm.engine.variable.Variables;
 
 import javax.inject.Named;
-import java.sql.*;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Named
@@ -16,8 +13,13 @@ public class ErstelltypLadenDelegate implements JavaDelegate {
     @Override
     public void execute(DelegateExecution delegateExecution){
 
-        List<String> erstellTypen = Arrays.asList("artikel", "artikeltyp", "kategorie");
+        Map<String, String> erstellTypen = new HashMap<String, String>();
+        erstellTypen.put("artikel", "Artikel");
+        erstellTypen.put("artikeltyp", "Artikeltyp");
+        erstellTypen.put("kategorie", "Kategorie");
         // Erstelltyp
-        delegateExecution.setVariable("erstellTyp", erstellTypen);
+        delegateExecution.setVariable("erstellTyp", Variables.objectValue(erstellTypen)
+                .serializationDataFormat(Variables.SerializationDataFormats.JSON)
+                .create());
     }
 }

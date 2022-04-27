@@ -1,20 +1,8 @@
 {
+  "schemaVersion": 4,
   "components": [
     {
-      "values": [
-        {
-          "value": "kategorie",
-          "label": "Kategorie"
-        },
-        {
-          "label": "Artikeltyp",
-          "value": "artikeltyp"
-        },
-        {
-          "label": "Artikel",
-          "value": "artikel"
-        }
-      ],
+      "values": [],
       "label": "Auswahl Erstelltyp",
       "type": "select",
       "id": "Field_0io88jg",
@@ -25,7 +13,6 @@
       "description": "Wählen Sie aus was Sie erstellen möchten."
     }
   ],
-  "schemaVersion": 4,
   "type": "default",
   "id": "erstelltypAuswahl",
   "exporter": {

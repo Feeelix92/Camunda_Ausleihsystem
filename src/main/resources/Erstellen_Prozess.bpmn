@@ -47,7 +47,7 @@
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">#{antwortAnlageFehler== 'ja'}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_1lahzja" sourceRef="eingabe-daten" targetRef="daten-speichern" />
-    <bpmn:userTask id="auswahl-ersteltyp" name="Auswahl des Erstelltyps" camunda:formRef="erstelltypAuswahl" camunda:formRefBinding="deployment" camunda:assignee="demo" camunda:candidateUsers="demo">
+    <bpmn:userTask id="auswahl-ersteltyp" name="Auswahl des Erstelltyps" camunda:formKey="embedded:/forms/Erstelltyp_Auswahl.html" camunda:assignee="demo" camunda:candidateUsers="demo">
       <bpmn:incoming>Flow_0sgivtg</bpmn:incoming>
       <bpmn:outgoing>Flow_0ol9w81</bpmn:outgoing>
     </bpmn:userTask>
@@ -80,13 +80,10 @@
   <bpmn:error id="Error_1m03ww0" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="erstellen-prozess">
-      <bpmndi:BPMNShape id="TextAnnotation_1g2hcv7_di" bpmnElement="TextAnnotation_1g2hcv7">
-        <dc:Bounds x="884" y="110" width="100" height="52" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="TextAnnotation_1v4cqip_di" bpmnElement="TextAnnotation_1v4cqip">
-        <dc:Bounds x="1040" y="440" width="100" height="84" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0sgivtg_di" bpmnElement="Flow_0sgivtg">
+        <di:waypoint x="360" y="410" />
+        <di:waypoint x="410" y="410" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_02v9bv7_di" bpmnElement="Flow_02v9bv7">
         <di:waypoint x="980" y="410" />
         <di:waypoint x="1332" y="410" />
@@ -132,10 +129,12 @@
         <di:waypoint x="930" y="600" />
         <di:waypoint x="1040" y="600" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0sgivtg_di" bpmnElement="Flow_0sgivtg">
-        <di:waypoint x="360" y="410" />
-        <di:waypoint x="410" y="410" />
-      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_02w8gdq_di" bpmnElement="Event_02w8gdq">
+        <dc:Bounds x="182" y="392" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="160" y="435" width="88" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1u2rmkk_di" bpmnElement="Event_1u2rmkk">
         <dc:Bounds x="1332" y="392" width="36" height="36" />
         <bpmndi:BPMNLabel>
@@ -175,15 +174,23 @@
       <bpmndi:BPMNShape id="Activity_03d1opu_di" bpmnElement="daten-speichern">
         <dc:Bounds x="880" y="370" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_02w8gdq_di" bpmnElement="Event_02w8gdq">
-        <dc:Bounds x="182" y="392" width="36" height="36" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="160" y="435" width="88" height="40" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1g7nrns_di" bpmnElement="erstelltypen-laden">
         <dc:Bounds x="260" y="370" width="100" height="80" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_1g2hcv7_di" bpmnElement="TextAnnotation_1g2hcv7">
+        <dc:Bounds x="884" y="110" width="100" height="52" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_1v4cqip_di" bpmnElement="TextAnnotation_1v4cqip">
+        <dc:Bounds x="1040" y="440" width="100" height="84" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_13vjy1e_di" bpmnElement="Error_Event">
+        <dc:Bounds x="912" y="432" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_0s0wozy_di" bpmnElement="DataOutputAssociation_0s0wozy">
+        <di:waypoint x="930" y="370" />
+        <di:waypoint x="930" y="265" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Association_072s7np_di" bpmnElement="Association_072s7np">
         <di:waypoint x="930" y="215" />
         <di:waypoint x="930" y="162" />
@@ -191,13 +198,6 @@
       <bpmndi:BPMNEdge id="Association_0phota2_di" bpmnElement="Association_0phota2">
         <di:waypoint x="1090" y="560" />
         <di:waypoint x="1090" y="524" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="Event_13vjy1e_di" bpmnElement="Error_Event">
-        <dc:Bounds x="912" y="432" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="DataOutputAssociation_0s0wozy_di" bpmnElement="DataOutputAssociation_0s0wozy">
-        <di:waypoint x="930" y="370" />
-        <di:waypoint x="930" y="265" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

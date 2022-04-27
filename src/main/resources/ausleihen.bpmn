@@ -13,6 +13,7 @@
         <bpmn:flowNodeRef>Gateway_12b0ujj</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_05x4mw5</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0p1gkww</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0yg0pp1</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_1qr2z0n" name="Nutzer">
         <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
@@ -39,7 +40,7 @@
       <bpmn:outgoing>Flow_1cpzuvi</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:endEvent id="Event_13yrrav" name="Ausleihprozess erfolgreich">
-      <bpmn:incoming>Flow_1tov719</bpmn:incoming>
+      <bpmn:incoming>Flow_0pieyed</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:endEvent id="Event_1v0mfwi" name="Nutzer nicht zugelassen">
       <bpmn:incoming>Flow_1cpzuvi</bpmn:incoming>
@@ -94,12 +95,17 @@
     <bpmn:sequenceFlow id="Flow_1cpzuvi" sourceRef="Gateway_1yd3w32" targetRef="Event_1v0mfwi">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${!nutzer_zugelassen}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="Flow_1tov719" sourceRef="Gateway_1yd3w32" targetRef="Event_13yrrav">
+    <bpmn:sequenceFlow id="Flow_1tov719" sourceRef="Gateway_1yd3w32" targetRef="Activity_0yg0pp1">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${nutzer_zugelassen}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_1uzc62b" sourceRef="Activity_19rres4" targetRef="Gateway_1yd3w32" />
     <bpmn:sequenceFlow id="Flow_0dhhfga" sourceRef="Activity_1i3fku5" targetRef="Activity_19rres4" />
     <bpmn:sequenceFlow id="Flow_1l4r7a1" sourceRef="StartEvent_1" targetRef="Activity_0ixe8wn" />
+    <bpmn:sequenceFlow id="Flow_0pieyed" sourceRef="Activity_0yg0pp1" targetRef="Event_13yrrav" />
+    <bpmn:serviceTask id="Activity_0yg0pp1" name="Verfügbarkeit ändern" camunda:class="softwarearchitektur.ausleihverwaltung.VerfuegbarkeitAendern">
+      <bpmn:incoming>Flow_1tov719</bpmn:incoming>
+      <bpmn:outgoing>Flow_0pieyed</bpmn:outgoing>
+    </bpmn:serviceTask>
     <bpmn:textAnnotation id="TextAnnotation_0r7ye3i">
       <bpmn:text>TODO: ArtikelListePrüfen</bpmn:text>
     </bpmn:textAnnotation>
@@ -160,8 +166,7 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1tov719_di" bpmnElement="Flow_1tov719">
         <di:waypoint x="1507" y="431" />
-        <di:waypoint x="1507" y="196" />
-        <di:waypoint x="1579" y="196" />
+        <di:waypoint x="1507" y="380" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1uzc62b_di" bpmnElement="Flow_1uzc62b">
         <di:waypoint x="1417" y="456" />
@@ -176,6 +181,11 @@
       <bpmndi:BPMNEdge id="Flow_1l4r7a1_di" bpmnElement="Flow_1l4r7a1">
         <di:waypoint x="232" y="166" />
         <di:waypoint x="277" y="166" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0pieyed_di" bpmnElement="Flow_0pieyed">
+        <di:waypoint x="1507" y="300" />
+        <di:waypoint x="1507" y="196" />
+        <di:waypoint x="1579" y="196" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="196" y="148" width="36" height="36" />
@@ -229,6 +239,9 @@
       <bpmndi:BPMNShape id="Activity_1bhuc6r_di" bpmnElement="Activity_1i3fku5">
         <dc:Bounds x="1047" y="136" width="100" height="80" />
         <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0dguozg_di" bpmnElement="Activity_0yg0pp1">
+        <dc:Bounds x="1457" y="300" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Association_16z1dww_di" bpmnElement="Association_16z1dww">
         <di:waypoint x="544" y="456" />

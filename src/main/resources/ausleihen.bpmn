@@ -78,7 +78,7 @@
       </bpmn:dataOutputAssociation>
     </bpmn:serviceTask>
     <bpmn:dataStoreReference id="DataStoreReference_167bmls" />
-    <bpmn:userTask id="Activity_1i3fku5" name="Artikel bestätigen" camunda:formKey="embedded:app:forms/artikelBestätigen.html" camunda:assignee="demo">
+    <bpmn:userTask id="Activity_1i3fku5" name="Artikel bestätigen" camunda:formKey="embedded:/forms/artikelBestätigen.html" camunda:assignee="demo">
       <bpmn:incoming>Flow_0d15x4z</bpmn:incoming>
       <bpmn:outgoing>Flow_0dhhfga</bpmn:outgoing>
     </bpmn:userTask>

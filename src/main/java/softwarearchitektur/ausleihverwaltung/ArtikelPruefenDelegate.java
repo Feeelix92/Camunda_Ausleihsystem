@@ -4,6 +4,7 @@ import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
 import org.camunda.bpm.engine.variable.Variables;
 import org.camunda.bpm.engine.variable.Variables.SerializationDataFormats;
+import softwarearchitektur.artikelverwaltung.ArtikelDataHandler;
 
 import java.io.Console;
 import java.util.ArrayList;
@@ -11,7 +12,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ArtikelPruefenDelegate implements JavaDelegate {
-	
+
+	private ArtikelDataHandler artikelDataHandler;
 
 	public ArtikelPruefenDelegate() {
 
@@ -19,16 +21,12 @@ public class ArtikelPruefenDelegate implements JavaDelegate {
 
 	@Override
 	public void execute(DelegateExecution execution) throws Exception {
-		
+
+		artikelDataHandler = new ArtikelDataHandler();
+
 		int artikelNr = (int) execution.getVariable("artikel");
-		
-		ArrayList<Integer> verfuegbareArtikel = new ArrayList<Integer>();
-		verfuegbareArtikel.add(1);
-		verfuegbareArtikel.add(2);
-		
-		boolean verfuegbar = false;
-			
-		verfuegbar = verfuegbareArtikel.contains(artikelNr);
+
+		boolean verfuegbar = artikelDataHandler.getById(artikelNr).isVerfuegbar();
 		
 		execution.setVariable("artikelNr", artikelNr);
 		execution.setVariable("artikel_verfuegbar", verfuegbar);

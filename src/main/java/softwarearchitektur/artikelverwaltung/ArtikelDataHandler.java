@@ -6,6 +6,8 @@ import DaoJPA.DaoJPA;
 import DaoJPA.EntityClasses.Article;
 import DaoJPA.EntityClasses.Condition;
 
+import java.util.List;
+
 public class ArtikelDataHandler {
 
     private static DaoJPA<Article> artikelDao;
@@ -20,6 +22,11 @@ public class ArtikelDataHandler {
         //TODO einen isPresent() check !?!?
         Article article = artikelDao.getById(artikelnummer).get();
         return article;
+    }
+
+    public List<Article> getAll(){
+        List<Article> articleList = artikelDao.getAll();
+        return articleList;
     }
 
     public void changeArticleAvailability(boolean availability, Article article){
@@ -41,4 +48,5 @@ public class ArtikelDataHandler {
     public String getConditionDescription(short conditionId){
         return conditionDao.getById(conditionId).get().getBeschreibung();
     }
+
 }

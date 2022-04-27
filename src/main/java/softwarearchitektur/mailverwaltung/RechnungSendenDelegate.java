@@ -35,6 +35,7 @@ public class RechnungSendenDelegate implements JavaDelegate {
     }
 
     private void sendMail(String name,String email){
+        System.out.println("Rechnung wird gesendet!!!!");
         String content = MailTemplate.mailTemplate;
         content = content.replace("<#content>","Guten Tag " + name + " im Anhang finden sie eine Rechnung zu einer Ausleihe die sie in letzer Zeit zurückgegeben haben. " +
                 "Wir bitten Sie die Rechnung nächst möglich zu zahlen, sodass keine extra Kosten anfallen.");

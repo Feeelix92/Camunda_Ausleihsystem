@@ -8,7 +8,7 @@ public class MailService {
 
     private static final String HOST = "smtp.googlemail.com";
     private static final String USER = "iegruppe3testmail@gmail.com";
-    private static final String PWD = "qwertz!23";
+    private static final String PWD = "Qwertz!234";
     private static final Integer PORT = 465;
 
     public void sendEmail(String to, String subject, String content) throws EmailException {

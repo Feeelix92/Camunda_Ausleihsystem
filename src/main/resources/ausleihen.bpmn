@@ -18,9 +18,9 @@
       <bpmn:lane id="Lane_1qr2z0n" name="Nutzer">
         <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0ixe8wn</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Event_13yrrav</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_156m9d3</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_1i3fku5</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_13yrrav</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
     <bpmn:startEvent id="StartEvent_1" name="Start">
@@ -39,9 +39,6 @@
       <bpmn:outgoing>Flow_1tov719</bpmn:outgoing>
       <bpmn:outgoing>Flow_1cpzuvi</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:endEvent id="Event_13yrrav" name="Ausleihprozess erfolgreich">
-      <bpmn:incoming>Flow_0pieyed</bpmn:incoming>
-    </bpmn:endEvent>
     <bpmn:endEvent id="Event_1v0mfwi" name="Nutzer nicht zugelassen">
       <bpmn:incoming>Flow_1cpzuvi</bpmn:incoming>
       <bpmn:messageEventDefinition id="MessageEventDefinition_06jus83" camunda:class="softwarearchitektur.mailverwaltung.NutzerSendEmailDelegate" />
@@ -106,6 +103,10 @@
       <bpmn:incoming>Flow_1tov719</bpmn:incoming>
       <bpmn:outgoing>Flow_0pieyed</bpmn:outgoing>
     </bpmn:serviceTask>
+    <bpmn:endEvent id="Event_13yrrav" name="Ausleihprozess erfolgreich">
+      <bpmn:incoming>Flow_0pieyed</bpmn:incoming>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_1utr1c0" camunda:class="softwarearchitektur.mailverwaltung.AusgeliehenSendEmailDelegate" />
+    </bpmn:endEvent>
     <bpmn:textAnnotation id="TextAnnotation_0r7ye3i">
       <bpmn:text>TODO: ArtikelListePrüfen</bpmn:text>
     </bpmn:textAnnotation>
@@ -202,12 +203,6 @@
       <bpmndi:BPMNShape id="Gateway_1yd3w32_di" bpmnElement="Gateway_1yd3w32" isMarkerVisible="true">
         <dc:Bounds x="1482" y="431" width="50" height="50" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_13yrrav_di" bpmnElement="Event_13yrrav">
-        <dc:Bounds x="1579" y="178" width="36" height="36" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="1559" y="141" width="75" height="27" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1jdrpdj_di" bpmnElement="Event_1v0mfwi">
         <dc:Bounds x="1579" y="438" width="36" height="36" />
         <bpmndi:BPMNLabel>
@@ -242,6 +237,12 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0dguozg_di" bpmnElement="Activity_0yg0pp1">
         <dc:Bounds x="1457" y="300" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0sqrgq0_di" bpmnElement="Event_13yrrav">
+        <dc:Bounds x="1579" y="178" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1559" y="141" width="75" height="27" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Association_16z1dww_di" bpmnElement="Association_16z1dww">
         <di:waypoint x="544" y="456" />

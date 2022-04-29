@@ -31,3 +31,5 @@ hs_err_pid*
 camunda-h2-database.trace.db
 camunda-h2-database.mv.db
 /bin/
+
+*.iml

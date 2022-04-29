@@ -13,7 +13,7 @@ public class ErstellenDelegate implements JavaDelegate {
         ErstellenFactory factory = new ErstellenFactory();
 
         // Erstelltyp
-        String erstellTyp = (String) delegateExecution.getVariable("erstellTyp");
+        String erstellTyp = (String) delegateExecution.getVariable("Erstelltyp");
         Erstellen erstellen = factory.neueInhalteErstellen(erstellTyp);
 
         // Entitäten aus DB laden
